@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/omok.iml" filepath="$PROJECT_DIR$/.idea/modules/omok.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/omok.main.iml" filepath="$PROJECT_DIR$/.idea/modules/omok.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/omok.test.iml" filepath="$PROJECT_DIR$/.idea/modules/omok.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/omok.iml" filepath="$PROJECT_DIR$/.idea/modules/omok.iml" group="omok" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/omok_main.iml" filepath="$PROJECT_DIR$/.idea/modules/omok_main.iml" group="omok" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/omok_test.iml" filepath="$PROJECT_DIR$/.idea/modules/omok_test.iml" group="omok" />
     </modules>
   </component>
 </project>
