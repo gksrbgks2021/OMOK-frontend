@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/omok.iml" filepath="$PROJECT_DIR$/.idea/modules/omok.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/omok.main.iml" filepath="$PROJECT_DIR$/.idea/modules/omok.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/omok.test.iml" filepath="$PROJECT_DIR$/.idea/modules/omok.test.iml" />
+    </modules>
+  </component>
+</project>
