@@ -4,32 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ebd6f407-4bd5-4281-9363-8bc47e50f40c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/frontend/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/frontend/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/frontend/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/frontend/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/frontend/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/frontend/public/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/frontend/public/logo192.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/frontend/public/logo512.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/frontend/public/manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/frontend/public/robots.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/frontend/src/App.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/frontend/src/App.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/frontend/src/App.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/frontend/src/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/frontend/src/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/frontend/src/logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/frontend/src/reportWebVitals.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/frontend/src/setProxy.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/frontend/src/setupTests.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/falcons/omok/Controller/HelloWorldController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/omok.iml" beforeDir="false" />
+    <list default="true" id="d16c86dd-31c1-485b-8406-8588f5db5a22" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/falcons/omok/Controller/파일설명.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compose.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,55 +20,29 @@
       <ProjectState />
     </projectState>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="JavaScript File" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 5
-}]]></component>
-  <component name="ProjectId" id="2XwiwoBqRJfbBwKh8Msf9FJz6fm" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="2YDBEiehI9bvU5mMdqGTJTpJ2Tv" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/leath/omok",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "settings.javascript.prettier",
+    "last_opened_file_path": "C:/Users/gksrb/Desktop/공부파일/sku/4학년/om",
+    "spring.configuration.checksum": "e21ab56b13d515e157190b07bfabfef5",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RunManager">
-    <configuration name="OmokApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+    <configuration name="OmokApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="omok.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="falcons.omok.OmokApplication" />
       <method v="2">
@@ -100,19 +53,27 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="ebd6f407-4bd5-4281-9363-8bc47e50f40c" name="Changes" comment="" />
-      <created>1699546785556</created>
+      <changelist id="d16c86dd-31c1-485b-8406-8588f5db5a22" name="Changes" comment="" />
+      <created>1700050159909</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1699546785556</updated>
-      <workItem from="1699546788384" duration="1189000" />
+      <updated>1700050159909</updated>
+      <workItem from="1700050161307" duration="624000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
