@@ -23,8 +23,8 @@ function Game() {
             isOpen={modalIsOpen}
             onRequestClose={() => setModalIsOpen(false)}
           >
-            <button>Code create</button>
-            <button>Code input</button>
+            <button>Create Code</button>
+            <button>Enter Code</button>
             <button onClick={() => setModalIsOpen(false)}>x</button>
           </Modal>
         </li>
