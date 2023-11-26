@@ -1,13 +1,19 @@
 import React from "react";
-
+import styled from "styled-components";
+/*
 const styles = StyleSheet.create({
   startBtn: {},
 });
+*/
+const Image = styled.img`
+  source: {
+  }
+`;
 
-function home() {
+function Home() {
   return (
     <div id="page-wrapper">
-      <div id="coin>"></div>
+      <div id="coin"></div>
       <div id="rank">
         <li>
           <ul className="tmpList"></ul>
@@ -16,16 +22,16 @@ function home() {
         </li>
       </div>
       <div id="myRank">
-        <div id="mydata"></div>
+        <div id="myData"></div>
       </div>
       <div id="start">
         <Image
-          style={styles.startBtn}
+          //style={start - btn}
           source={"/src/components/icon/homepages/offlineBtn"}
           // setOnclickListener
         ></Image>
         <Image
-          style={styles.startBtn}
+          //style={start - btn}
           source={"/src/components/icon/homepages/onlineBtn"}
           // setOnclickListener
         ></Image>
@@ -34,4 +40,4 @@ function home() {
   );
 }
 
-export default home;
+export default Home;

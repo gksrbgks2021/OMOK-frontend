@@ -1,40 +1,10 @@
-import React, { Component, useState } from "react";
-import { Route, Routes, Link } from "react-router-dom";
-import Modal from "react-modal";
+import React from "react";
+import { Route, Routes } from "react-router-dom";
 import GomokuBoard from "./components/GomokuBoard.tsx";
+import Home from "./pages/Home.js";
+import Game from "./pages/game.js";
+import NavigationBar from "./NavigationBar";
 
-function Home() {
-  return (
-    <div>
-      <h2>Home</h2>
-    </div>
-  );
-}
-
-function Game() {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  return (
-    <div>
-      <h2>Game</h2>
-      <ul>
-        <li>
-          <button onClick={() => setModalIsOpen(true)}>Online</button>
-          <Modal
-            isOpen={modalIsOpen}
-            onRequestClose={() => setModalIsOpen(false)}
-          >
-            <button>Create Code</button>
-            <button>Enter Code</button>
-            <button onClick={() => setModalIsOpen(false)}>x</button>
-          </Modal>
-        </li>
-        <li>
-          <Link to="/game/offline">Offline</Link>
-        </li>
-      </ul>
-    </div>
-  );
-}
 function Friend() {
   return (
     <div>
@@ -58,23 +28,19 @@ function Profile() {
 }
 
 function App() {
+  /*
+  function setScreenSize() {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
+  }
+  useEffect(() => {
+    setScreenSize();
+  });
+  */
   return (
     <div>
       <h1>O-MOK</h1>
-      <ul>
-        <li>
-          <Link to="/game">Game</Link>
-        </li>
-        <li>
-          <Link to="/friend">Friend</Link>
-        </li>
-        <li>
-          <Link to="/rank">Rank</Link>
-        </li>
-        <li>
-          <Link to="/profile">Profile</Link>
-        </li>
-      </ul>
+      <NavigationBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/game" element={<Game />} />

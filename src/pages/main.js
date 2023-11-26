@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 
 const styles = StyleSheet.create({
   container: {},
@@ -8,26 +9,29 @@ const styles = StyleSheet.create({
   guestLogin: {},
 });
 
+const ImageBtn = styled.button`
+  background-image: {
+  },
+  background-size: cover,
+  background-position: center
+`;
+
 const displayImage = () => {
   return (
-    <view style={styles.container}>
+    <>
       <Image
-        style={styles.mainLogo}
-        source={"/src/components/icon/mainPage/mainLogo.png"}
+        background-image={"/src/components/icon/mainPage/mainLogo.png"}
       ></Image>
       <Image
-        style={styles.googleLogin}
-        source={"/src/components/icon/mainPage/googleLoginBtn.png"}
+        background-image={"/src/components/icon/mainPage/googleLoginBtn.png"}
       ></Image>
       <Image
-        style={styles.kakaoLogin}
-        source={"/src/components/icon/mainPage/kakaoLoginBtn.png"}
+        background-image={"/src/components/icon/mainPage/kakaoLoginBtn.png"}
       ></Image>
       <Image
-        style={styles.guestLogin}
-        source={"/src/components/icon/mainPage/guestLoginBtn.png"}
+        background-image={"/src/components/icon/mainPage/guestLoginBtn.png"}
       ></Image>
-    </view>
+    </>
   );
 };
 
