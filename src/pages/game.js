@@ -1,11 +1,12 @@
 import { useState } from "react";
 import Modal from "react-modal";
 import { Link } from "react-router-dom";
+import "../styles/gamePageStyle.css";
 
 function Game() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   return (
-    <div>
+    <div className="body">
       <h2>Game</h2>
       <ul>
         <li>

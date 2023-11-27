@@ -22,7 +22,7 @@ const NavBar = styled(NavLink)`
 
 const NavigationBar = () => {
   return (
-    <div className="wrapper">
+    <div className="wrapperNav">
       <NavBar to="/game">
         <img src={gameImage} alt="game" />
       </NavBar>
