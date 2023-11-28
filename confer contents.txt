@@ -1,0 +1,18 @@
+11/29 회의에서 다룰 부분
+
+1. Status/Navigation Bar (프론트)
+- Routes 내의 Game, Friend, Rank, Profile에서는 필요함
+- Home과 인게임 화면(+오류 화면)에서는 보이면 안됨
+결론  -> 애초에 HTML 태그로 나눌 것인지, 
+      react Hook으로 비활성화 시킬것인지 정해야 함
+
+2. design (전체)
+- figma에 작성된 부분은 friend, rank, game 페이지에 
+  나눠 담을 수 있는 부분임
+- 넣을 게 더 없어서라도 game 페이지에는 
+  on/offline 버튼만 있어야 될 것 같음
+결론  -> 화면 구성 디자인 다시 짜봅시다!
+      (가로로 on/offline 버튼 구성하는 것보다
+      타 게임 참고해서 하는 게 나을 것 같음)
+
+3. 
