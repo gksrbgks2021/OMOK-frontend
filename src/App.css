@@ -17,3 +17,13 @@ body {
 
 .navBarActive {
 }
+
+@media (max-width: 360px) {
+  .container {
+    flex-direction: column;
+  }
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+}

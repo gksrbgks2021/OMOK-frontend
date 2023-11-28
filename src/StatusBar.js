@@ -1,16 +1,18 @@
 import { useState } from "react";
 import styled from "styled-components";
 import moneyImage from "./styles/icon/statusBar/smile.png";
-import "./styles/statusBarStyle.css";
 
 //status bar 전체
 const StatBar = styled.div`
-  text-align: right;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 30px;
-  line-height: 30px;
-  &.selected {
-    font-weight: bold;
-  }
+  width: 360px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #ffffff;
 `;
 
 //money
@@ -42,15 +44,13 @@ const StatusBar = () => {
   };
 
   return (
-    <div className="wrapperStat">
-      <StatBar>
-        <Name>user1</Name>
-        <Asset>
-          <Image src={moneyImage} alt="money" />
-          {money}
-        </Asset>
-      </StatBar>
-    </div>
+    <StatBar>
+      <Name>user1</Name>
+      <Asset>
+        <Image src={moneyImage} alt="money" />
+        {money}
+      </Asset>
+    </StatBar>
   );
 };
 
