@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import GomokuBoard from "./components/GomokuBoard.tsx";
 import Main from "./pages/main.js";
@@ -11,7 +11,35 @@ import StatusBar from "./StatusBar.js";
 import "./App.css";
 
 function App() {
-  /*
+  const [showMain, setShowMain] = useState(true);
+  const handleButtonClick = () => {
+    setShowMain(!showMain);
+  };
+
+  if (showMain) {
+    return <Main onButtonClick={handleButtonClick} />;
+  } else {
+    return (
+      <div className="App">
+        <div className="screen">
+          <StatusBar />
+          <NavigationBar />
+          <Routes>
+            <Route path="/game" element={<Game />} />
+            <Route path="/friend" element={<Friend />} />
+            <Route path="/rank" element={<Rank />} />
+            <Route path="/profile" element={<Profile />} />
+
+            <Route path="/game/offline" element={<GomokuBoard />} />
+            <Route path="/*" element={"Not Found"} />
+          </Routes>
+        </div>
+      </div>
+    );
+  }
+}
+
+/*
   //반응형 함수(?) 일단은 안씀
   function setScreenSize() {
     let vh = window.innerHeight * 0.01;
@@ -21,22 +49,5 @@ function App() {
     setScreenSize();
   });
   */
-  return (
-    <div className="App">
-      <div className="screen">
-        <StatusBar />
-        <NavigationBar />
-        <Routes>
-          <Route path="/game" element={<Game />} />
-          <Route path="/friend" element={<Friend />} />
-          <Route path="/rank" element={<Rank />} />
-          <Route path="/profile" element={<Profile />} />
 
-          <Route path="/game/offline" element={<GomokuBoard />} />
-          <Route path="/*" element={"Not Found"} />
-        </Routes>
-      </div>
-    </div>
-  );
-}
 export default App;
