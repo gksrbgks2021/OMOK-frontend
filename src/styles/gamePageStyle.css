@@ -2,3 +2,26 @@
   display: block;
   margin: 0;
 }
+
+li {
+  list-style: none;
+}
+
+input {
+  background: none;
+  border: none;
+}
+
+#offlineBtn {
+  background-image: url(./icon/homePage/offlineBtn.png);
+  background-size: cover;
+  width: 240px;
+  height: 72px;
+}
+
+#onlineBtn {
+  background-image: url(./icon/homePage/onlineBtn.png);
+  background-size: cover;
+  width: 240px;
+  height: 72px;
+}

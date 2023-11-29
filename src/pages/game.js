@@ -10,7 +10,11 @@ function Game() {
       <h2>Game</h2>
       <ul>
         <li>
-          <button onClick={() => setModalIsOpen(true)}>Online</button>
+          <input
+            type="button"
+            id="offlineBtn"
+            onClick={() => setModalIsOpen(true)}
+          />
           <Modal
             isOpen={modalIsOpen}
             onRequestClose={() => setModalIsOpen(false)}
@@ -22,7 +26,9 @@ function Game() {
           </Modal>
         </li>
         <li>
-          <Link to="/game/offline">Offline</Link>
+          <Link to="/game/offline">
+            <div id="offlineBtn"></div>
+          </Link>
         </li>
       </ul>
     </div>

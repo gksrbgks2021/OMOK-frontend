@@ -1,38 +1,14 @@
-import React from "react";
-import styled from "styled-components";
+import "../styles/mainPageStyle.css";
 
-const styles = StyleSheet.create({
-  container: {},
-  mainLogo: {},
-  googleLogin: {},
-  kakaoLogin: {},
-  guestLogin: {},
-});
-
-const ImageBtn = styled.button`
-  background-image: {
-  },
-  background-size: cover,
-  background-position: center
-`;
-
-const displayImage = () => {
+function main() {
   return (
-    <>
-      <Image
-        background-image={"/src/components/icon/mainPage/mainLogo.png"}
-      ></Image>
-      <Image
-        background-image={"/src/components/icon/mainPage/googleLoginBtn.png"}
-      ></Image>
-      <Image
-        background-image={"/src/components/icon/mainPage/kakaoLoginBtn.png"}
-      ></Image>
-      <Image
-        background-image={"/src/components/icon/mainPage/guestLoginBtn.png"}
-      ></Image>
-    </>
+    <div>
+      <div id="mainLogo" />
+      <button className="loginBtn" id="kakaoLogin" />
+      <button className="loginBtn" id="googleLogin" />
+      <button className="loginBtn" id="guestLogin" />
+    </div>
   );
-};
+}
 
 export default main;

@@ -13,8 +13,7 @@ const NavBar = styled(NavLink)`
   background-color: #fff3b5;
 
   // 세로길이 설정
-  height: 45px;
-  line-height: 45px;
+  height: 72px;
   &.selected {
     font-weight: bold;
   }
@@ -25,18 +24,22 @@ const NavigationBar = () => {
     <div className="wrapperNav">
       <NavBar to="/game">
         <img src={gameImage} alt="game" />
+        Game
       </NavBar>
 
       <NavBar to="/friend">
         <img src={friendImage} alt="friend" />
+        Friend
       </NavBar>
 
       <NavBar to="/rank">
         <img src={rankImage} alt="rank" />
+        Rank
       </NavBar>
 
       <NavBar to="/profile">
         <img src={profileImage} alt="profile" />
+        Profile
       </NavBar>
     </div>
   );
