@@ -1,15 +1,32 @@
 .board {
   display: grid;
   grid-template-columns: repeat(19, 1fr);
-  grid-gap: 1px;
+  /* grid-gap: 1px; */
+  margin-top: 30%;
+  margin-left: 5%;
   background-color: black;
-  border: 1px solid black;
+  border: 0.5px solid black;
   width: fit-content;
 }
 
 .cell {
   background-color: #deb887; /* A beige-like color */
-  width: 20px;
-  height: 20px;
+  border: 0.5px solid black;
+  width: 16px;
+  height: 16px;
   cursor: pointer;
+}
+
+.black {
+  background-image: url(./icon/board/black.png);
+  background-size: cover;
+  width: 16px;
+  height: 16px;
+}
+
+.white {
+  background-image: url(./icon/board/white.png);
+  background-size: cover;
+  width: 16px;
+  height: 16px;
 }
