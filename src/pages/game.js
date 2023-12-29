@@ -12,7 +12,7 @@ function Game() {
         <li>
           <input
             type="button"
-            id="offlineBtn"
+            id="onlineBtn"
             onClick={() => setModalIsOpen(true)}
           />
           <Modal
