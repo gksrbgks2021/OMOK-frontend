@@ -1,9 +1,9 @@
 import React from "react";
 import "../styles/GomokuBoard.css";
-
 const GomokuBoard: React.FC = () => {
   const handleClick = (i: number, j: number) => {
     console.log(`Cell clicked: (${i}, ${j})`);
+
   };
 
   const boardSize = 19;
