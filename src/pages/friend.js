@@ -2,10 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { styled } from "styled-components";
 import "./friend.css";
-
-// const Container = styled.div`
-//   height: 200px;
-// `;
+import profilePic from "/Users/seojinkim/Desktop/OMOK/src/components/icon/navBar/user-circle.png";
 
 const TabNav = styled.ul`
   display: flex;
@@ -19,6 +16,7 @@ const TabNav = styled.ul`
     font-size: 15px;
     transition: 0.5s;
     border-radius: 10px 10px 0px 0px;
+    cursor: pointer;
   }
 
   .focused {
@@ -47,12 +45,22 @@ const TabBack = styled.div`
   background-color: grey;
 `;
 
-const ContentAll = styled.div`
-  color: black;
-`;
+// const ContentAll = styled.div`
+//   color: black;
+// `;
 const ContentSearch = styled.div`
   display: flex;
 `;
+
+const ContentAll = () => {
+  return (
+    <div>
+      <img scr={profilePic} alt=""></img>
+      
+    </div>
+  );
+};
+
 export const Tab = () => {
   // Tab Menu 중 현재 어떤 Tab이 선택되어 있는지 확인하기 위한 currentTab 상태와 currentTab을 갱신하는 함수가 존재해야 하고, 초기값은 0.
   const [currentTab, clickTab] = useState(0);
