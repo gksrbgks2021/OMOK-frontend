@@ -45,18 +45,20 @@ const TabBack = styled.div`
   background-color: grey;
 `;
 
-// const ContentAll = styled.div`
-//   color: black;
-// `;
-const ContentSearch = styled.div`
-  display: flex;
-`;
-
 const ContentAll = () => {
   return (
     <div>
       <img scr={profilePic} alt=""></img>
-      content all
+      content All user01 user02
+    </div>
+  );
+};
+
+const ContentSearch = () => {
+  return (
+    <div id="fSearch">
+      <input type="text" placeholder="search name"></input>
+      <button id="fButton">Search</button>
     </div>
   );
 };
