@@ -11,8 +11,8 @@
 .cell {
   background-color: #deb887; /* A beige-like color */
   /* border: 0.5px solid black; */
-  width: 16px;
-  height: 16px;
+  width: 22px;
+  height: 22px;
   cursor: pointer;
 }
 
@@ -53,15 +53,15 @@
 .black {
   background-image: url(./icon/board/black.png);
   background-size: cover;
-  width: 16px;
-  height: 16px;
+  width: 22px;
+  height: 22px;
 }
 
 .white {
   background-image: url(./icon/board/white.png);
   background-size: cover;
-  width: 16px;
-  height: 16px;
+  width: 22px;
+  height: 22px;
 }
 
 #contain_board {
