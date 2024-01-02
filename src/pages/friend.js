@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { styled } from "styled-components";
 import "./friend.css";
-import profilePic from "/Users/seojinkim/Desktop/OMOK/src/components/icon/navBar/user-circle.png";
+import profilePic from "src/components/icon/navBar/user-circle.png";
 
 const TabNav = styled.ul`
   display: flex;
@@ -56,6 +56,7 @@ const ContentAll = () => {
   return (
     <div>
       <img scr={profilePic} alt=""></img>
+      content all
     </div>
   );
 };
@@ -98,14 +99,14 @@ export const Tab = () => {
           <p>{menuArr[currentTab].content}</p>
         </Desc>
 
-        <ContentAll>
+        {/* <ContentAll>
           <div>user01</div>
         </ContentAll>
 
         <ContentSearch>
           <input id="fSearch" type="text" placeholder="search freinds"></input>
           <button>Search</button>
-        </ContentSearch>
+        </ContentSearch> */}
       </div>
     </>
   );
