@@ -1,6 +1,6 @@
 .board {
   display: grid;
-  grid-template-columns: repeat(19, 1fr);
+  grid-template-columns: repeat(15, 1fr);
   /* grid-gap: 1px; */
   margin: auto; /* Center the grid horizontally and vertically */
   background-color: black;
@@ -23,7 +23,7 @@
 
 .cell::before,
 .cell::after {
-  content: '';
+  content: "";
   position: absolute;
   background-color: black; /* You can change the color as needed */
 }
@@ -50,7 +50,6 @@
   background-color: red; /* Change the hover color as needed */
 }
 
-
 .black {
   background-image: url(./icon/board/black.png);
   background-size: cover;
@@ -65,7 +64,7 @@
   height: 16px;
 }
 
-#contain_board{
+#contain_board {
   margin-top: 40%;
   display: flex;
   align-items: center;
@@ -73,16 +72,12 @@
   position: relative;
 }
 
-
-#back_board{
+#back_board {
   width: 320px;
   height: 320px;
   background-color: #ccc;
   position: absolute;
 }
-#board{
+#board {
   position: absolute;
-
 }
-
-

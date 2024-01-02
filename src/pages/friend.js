@@ -9,20 +9,21 @@ const TabNav = styled.ul`
   flex-direction: row;
   width: 100%;
   height: 40px;
-  background-color: grey;
+  background-color: white;
   padding: 0px;
 
   .submenu {
     font-size: 15px;
     transition: 0.5s;
     border-radius: 10px 10px 0px 0px;
+    background-color: grey;
     cursor: pointer;
   }
 
   .focused {
     //선택된 Tabmenu 에만 적용되는 CSS를 구현
     background-color: rgb(255, 255, 255);
-    color: rgb(21, 20, 20);
+    // color: rgb(21, 20, 20);
   }
 `;
 

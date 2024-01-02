@@ -4,7 +4,7 @@ import "../styles/GomokuBoard.css";
 const GomokuBoard: React.FC = () => {
   const [turn, setTurn] = useState<number>(0);
   const [cellState, setCellState] = useState<number[][]>(
-    Array.from({ length: 19 }, () => Array(19).fill(null))
+    Array.from({ length: 15 }, () => Array(15).fill(null))
   );
 
   const handleClick = (i: number, j: number) => {
@@ -18,7 +18,7 @@ const GomokuBoard: React.FC = () => {
     }
   };
 
-  const boardSize = 19;
+  const boardSize = 15;
   const board = [] as any;
   for (let i = 0; i < boardSize; i++) {
     const row = [] as any;
@@ -39,13 +39,11 @@ const GomokuBoard: React.FC = () => {
   }
 
   return (
-  
-  <div id="contain_board">
-    <div className="board">{board}</div>
-    {/* Adding a 320x320px rectangle */}
-    <div id="back_board"></div>
-  </div>
-  
+    <div id="contain_board">
+      <div className="board">{board}</div>
+      {/* Adding a 320x320px rectangle */}
+      <div id="back_board"></div>
+    </div>
   );
 };
 
