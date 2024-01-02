@@ -14,8 +14,9 @@ code {
 
 #root {
   width: 360px;
-  height: 640px;
+  height: 100vh;
   background: white;
+  margin-top: 30px;
   margin-left: auto;
   margin-right: auto;
 
