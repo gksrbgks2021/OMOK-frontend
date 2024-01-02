@@ -56,7 +56,6 @@ const ContentAll = () => {
   return (
     <div>
       <img scr={profilePic} alt=""></img>
-      
     </div>
   );
 };
