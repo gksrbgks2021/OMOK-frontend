@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import GomokuBoard from "./components/GomokuBoard.tsx";
 import Main from "./pages/main.js";
 import Game from "./pages/game.js";
-import Friend from "./pages/friend.js";
+import Tab from "./pages/friend.js";
 import Rank from "./pages/rank.js";
 import Profile from "./pages/profile.js";
 import NavigationBar from "./NavigationBar.js";
@@ -26,7 +26,7 @@ function App() {
           <NavigationBar />
           <Routes>
             <Route path="/game" element={<Game />} />
-            <Route path="/friend" element={<Friend />} />
+            <Route path="/friend" element={<Tab />} />
             <Route path="/rank" element={<Rank />} />
             <Route path="/profile" element={<Profile />} />
 
