@@ -38,7 +38,15 @@ const GomokuBoard: React.FC = () => {
     board.push(<div key={i}>{row}</div>);
   }
 
-  return <div className="board">{board}</div>;
+  return (
+  
+  <div id="contain_board">
+    <div className="board">{board}</div>
+    {/* Adding a 320x320px rectangle */}
+    <div id="back_board"></div>
+  </div>
+  
+  );
 };
 
 export default GomokuBoard;

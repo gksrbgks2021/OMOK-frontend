@@ -2,8 +2,7 @@
   display: grid;
   grid-template-columns: repeat(19, 1fr);
   /* grid-gap: 1px; */
-  margin-top: 30%;
-  margin-left: 5%;
+  margin: auto; /* Center the grid horizontally and vertically */
   background-color: black;
   border: 0.5px solid black;
   width: fit-content;
@@ -11,11 +10,46 @@
 
 .cell {
   background-color: #deb887; /* A beige-like color */
-  border: 0.5px solid black;
+  /* border: 0.5px solid black; */
   width: 16px;
   height: 16px;
   cursor: pointer;
 }
+
+.cell {
+  position: relative;
+  z-index: 10;
+}
+
+.cell::before,
+.cell::after {
+  content: '';
+  position: absolute;
+  background-color: black; /* You can change the color as needed */
+}
+
+/* Horizontal line */
+.cell::before {
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+}
+
+/* Vertical line */
+.cell::after {
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+}
+
+/* Adjustments for better visibility */
+.cell:hover::before,
+.cell:hover::after {
+  background-color: red; /* Change the hover color as needed */
+}
+
 
 .black {
   background-image: url(./icon/board/black.png);
@@ -30,3 +64,25 @@
   width: 16px;
   height: 16px;
 }
+
+#contain_board{
+  margin-top: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+
+#back_board{
+  width: 320px;
+  height: 320px;
+  background-color: #ccc;
+  position: absolute;
+}
+#board{
+  position: absolute;
+
+}
+
+
