@@ -73,9 +73,10 @@
 }
 
 #back_board {
-  width: 320px;
-  height: 320px;
-  background-color: #ccc;
+  width: 331px;
+  height: 331px;
+  background-color: #deb887;
+  border: 5px double black;
   position: absolute;
 }
 #board {
