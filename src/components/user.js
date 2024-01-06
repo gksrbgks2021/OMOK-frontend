@@ -2,8 +2,8 @@ import React, { Component } from "react";
 
 class User extends Component {
   render() {
-    return <div>User</div>;
+    return <div>UserClass</div>;
   }
 }
 
-export default user;
+export default User;

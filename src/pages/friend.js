@@ -3,6 +3,7 @@ import { useState } from "react";
 import { styled } from "styled-components";
 import "./friend.css";
 import profilePic from "../components/icon/user-circle.png";
+import User from "../components/User";
 
 const TabNav = styled.ul`
   display: flex;
@@ -50,7 +51,8 @@ const ContentAll = () => {
   return (
     <div>
       <img scr={profilePic} alt=""></img>
-      content All user01 user02
+      <User />
+      <User />
     </div>
   );
 };

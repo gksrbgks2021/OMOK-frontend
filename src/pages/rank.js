@@ -1,4 +1,5 @@
 import "../styles/rankStyle.css";
+import User from "../components/User";
 
 function Rank() {
   return (
@@ -6,23 +7,20 @@ function Rank() {
       <h2>Rank</h2>
       <div id="block">
         <div id="second">
-          <div className="user">user</div>
-          <div className="text">2</div>
+          <User />
         </div>
         <div id="first">
-          <div className="user">user</div>
-          <div className="text">1</div>
+          <User />
         </div>
         <div id="third">
-          <div className="user">user</div>
-          <div className="text">3</div>
+          <User />
         </div>
       </div>
       <div id="others">
         <li>
-          <ol className="user">user</ol>
-          <ol className="user">user</ol>
-          <ol className="user">user</ol>
+          <User />
+          <User />
+          <User />
         </li>
       </div>
     </div>
