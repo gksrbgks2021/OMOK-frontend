@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { useState } from "react";
 import { styled } from "styled-components";
 import "./friend.css";
@@ -17,7 +17,7 @@ const TabNav = styled.ul`
     font-size: 15px;
     transition: 0.5s;
     border-radius: 10px 10px 0px 0px;
-    background-color: grey;
+    background-color: lightgrey;
     cursor: pointer;
   }
 
@@ -47,6 +47,28 @@ const TabBack = styled.div`
   background-color: grey;
 `;
 
+class SearchUser extends Component {
+  render() {
+    return (
+      <div className="user">
+        <User />
+        <button className="sButton">send request</button>
+      </div>
+    );
+  }
+}
+
+class RequestUser extends Component {
+  render() {
+    return (
+      <div className="user">
+        <User />
+        <button className="sButton">accept</button>
+        <button className="sButton">decline</button>
+      </div>
+    );
+  }
+}
 const ContentAll = () => {
   return (
     <div>
@@ -62,6 +84,24 @@ const ContentSearch = () => {
     <div id="fSearch">
       <input type="text" placeholder="search name"></input>
       <button id="fButton">Search</button>
+      <div id="userBox">
+        <SearchUser />
+        <SearchUser />
+        <SearchUser />
+        <SearchUser />
+      </div>
+    </div>
+  );
+};
+
+const ContentRequests = () => {
+  return (
+    <div id="userBox">
+      <RequestUser />
+      <RequestUser />
+      <RequestUser />
+      <RequestUser />
+      <RequestUser />
     </div>
   );
 };
@@ -73,7 +113,7 @@ export const Tab = () => {
   const menuArr = [
     { name: "All", content: <ContentAll /> },
     { name: "Search", content: <ContentSearch /> },
-    { name: "Requests", content: "Tab menu THREE" },
+    { name: "Requests", content: <ContentRequests /> },
   ];
 
   const selectMenuHandler = (index) => {
@@ -87,9 +127,6 @@ export const Tab = () => {
       <div>
         <TabBack>
           <TabNav>
-            {/* <li className="submenu">{menuArr[0].name}</li>
-          <li className="submenu">{menuArr[1].name}</li>
-          <li className="submenu">{menuArr[2].name}</li> */}
             {menuArr.map((el, index) => (
               <Option
                 className={index === currentTab ? "submenu focused" : "submenu"}
@@ -103,15 +140,6 @@ export const Tab = () => {
         <Desc>
           <p>{menuArr[currentTab].content}</p>
         </Desc>
-
-        {/* <ContentAll>
-          <div>user01</div>
-        </ContentAll>
-
-        <ContentSearch>
-          <input id="fSearch" type="text" placeholder="search freinds"></input>
-          <button>Search</button>
-        </ContentSearch> */}
       </div>
     </>
   );

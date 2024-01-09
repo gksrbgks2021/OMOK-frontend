@@ -1,12 +1,39 @@
 #fSearch {
   border-style: solid;
   width: 80%;
-  height: 30px;
+  height: 35px;
   margin-top: 20px;
   margin-left: 20px;
+  border-radius: 10px;
 }
 
 #fSearch > button {
   cursor: pointer;
   color: blue;
+}
+
+#userBox {
+  border-style: solid;
+  width: 300px;
+  height: 400px;
+  margin-top: 50px;
+  margin-left: 20px;
+  border-radius: 5px;
+  background-color: rgba(236, 235, 235, 0.878);
+}
+
+.divider {
+  border-top: 3px solid white;
+  border-bottom: none;
+  margin: 5% 10% 5% 10%;
+}
+
+.user{
+  display: flex;
+  justify-content: space-around;
+}
+.sButton{
+  border: solid black 1px;
+  border-radius: 5px;
+  cursor: pointer;
 }
