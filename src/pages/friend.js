@@ -24,6 +24,7 @@ const TabNav = styled.ul`
   .focused {
     //선택된 Tabmenu 에만 적용되는 CSS를 구현
     background-color: rgb(255, 255, 255);
+    border-bottom: none;
     // color: rgb(21, 20, 20);
   }
 `;
@@ -47,24 +48,91 @@ const TabBack = styled.div`
   background-color: grey;
 `;
 
+const ButtonContainer = styled.button`
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: white;
+  margin: 0px;
+`;
+const UserSearchBarDiv = styled.div`
+  width: 100%;
+  height: 40px;
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-bottom: 20px;
+`;
+const UserSearchInput = styled.input`
+  cursor: pointer;
+  height: 100%;
+  width: 95%;
+  border-radius: 10px;
+  padding-left: 10px;
+`;
+const UserSearchButton = styled.button`
+  width: 5%;
+  cursor: pointer;
+  color: blue;
+  bottom: 0px;
+}`;
+
+class SampleButton extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  render() {
+    return (
+      <ButtonContainer onClick={this.props.onClick}>
+        {this.props.text}
+      </ButtonContainer>
+    );
+  }
+}
+
 class SearchUser extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+  sendRequestFunction = (e) => {
+    console.log("우왕");
+    //여기서 API날리면 됨
+  };
+
   render() {
     return (
       <div className="user">
         <User />
-        <button className="sButton">send request</button>
+        <SampleButton
+          text={"send request"}
+          onClick={this.sendRequestFunction}
+        />
       </div>
     );
   }
 }
 
 class RequestUser extends Component {
+  acceptFunction = (e) => {
+    console.log("우왕 받아줬당");
+    //여기서 API날리면 됨
+  };
+  declineFunction = async (e) => {
+    console.log("힝 까였어ㅠ");
+    //여기서 API날리면 됨
+    //const result = await fetch("https://server.com/api/declineFriendRequest"); 등등..
+    //result.then()
+  };
+
   render() {
     return (
       <div className="user">
         <User />
-        <button className="sButton">accept</button>
-        <button className="sButton">decline</button>
+
+        <SampleButton text={"accept"} onClick={this.acceptFunction} />
+        <SampleButton text={"decline"} onClick={this.declineFunction} />
       </div>
     );
   }
@@ -82,8 +150,7 @@ const ContentAll = () => {
 const ContentSearch = () => {
   return (
     <div id="fSearch">
-      <input type="text" placeholder="search name"></input>
-      <button id="fButton">Search</button>
+      <SearchBar />
       <div id="userBox">
         <SearchUser />
         <SearchUser />
@@ -91,6 +158,15 @@ const ContentSearch = () => {
         <SearchUser />
       </div>
     </div>
+  );
+};
+
+const SearchBar = () => {
+  return (
+    <UserSearchBarDiv>
+      <UserSearchInput type="text" placeholder="search name"></UserSearchInput>
+      <UserSearchButton>Search</UserSearchButton>
+    </UserSearchBarDiv>
   );
 };
 
