@@ -5,6 +5,11 @@ import "../styles/gamePageStyle.css";
 
 function Game() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [counter, setCounter] = useState(100);
+  const updateCounter = (value) => {
+    setCounter((prevCounter) => prevCounter + value);
+  };
+
   return (
     <div className="body">
       <h2>Game</h2>
@@ -16,12 +21,32 @@ function Game() {
             onClick={() => setModalIsOpen(true)}
           />
           <Modal
+            contentClassName="modal"
+            style={{ width: "500px" }}
             isOpen={modalIsOpen}
             onRequestClose={() => setModalIsOpen(false)}
             appElement={document.getElementById("root") || undefined}
           >
-            <button>Create Code</button>
-            <button>Enter Code</button>
+            <div id="betting">
+              <div id="betting-text">Entry Fee (betting)</div>
+              <div id="coin">{counter}</div>
+              <button id="minus" onClick={() => updateCounter(-10)}>
+                -
+              </button>
+              <button id="plus" onClick={() => updateCounter(10)}>
+                +
+              </button>
+            </div>
+            <div id="invitation">
+              <div id="invitation-text">Game invitation</div>
+              <button id="create-code">Generate Room Code</button>
+              <input
+                id="enter-code"
+                type="text"
+                placeholder="Enter Friend Code..."
+              ></input>
+              <button id="start">Start Game!</button>
+            </div>
             <button onClick={() => setModalIsOpen(false)}>x</button>
           </Modal>
         </li>

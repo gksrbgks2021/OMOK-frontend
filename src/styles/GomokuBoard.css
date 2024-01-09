@@ -26,6 +26,7 @@
   content: "";
   position: absolute;
   background-color: black; /* You can change the color as needed */
+  z-index: 1;
 }
 
 /* Horizontal line */
@@ -34,6 +35,7 @@
   left: 0;
   right: 0;
   height: 1px;
+  z-index: 1;
 }
 
 /* Vertical line */
@@ -42,6 +44,7 @@
   bottom: 0;
   left: 50%;
   width: 1px;
+  z-index: 1;
 }
 
 /* Adjustments for better visibility */
@@ -50,11 +53,20 @@
   background-color: red; /* Change the hover color as needed */
 }
 
+.cell.black::before,
+.cell.black::after,
+.cell.white::before,
+.cell.white::after {
+  width: 0;
+  height: 0;
+}
+
 .black {
   background-image: url(./icon/board/black.png);
   background-size: cover;
   width: 22px;
   height: 22px;
+  z-index: 100;
 }
 
 .white {
@@ -62,6 +74,7 @@
   background-size: cover;
   width: 22px;
   height: 22px;
+  z-index: 100;
 }
 
 #contain_board {
