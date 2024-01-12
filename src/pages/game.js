@@ -5,6 +5,10 @@ import "../styles/gamePageStyle.css";
 
 function Game() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const handleCreateRoom = () => {
+
+    const sokect = new WebSocket("");
+  };
   return (
     <div className="body">
       <h2>Game</h2>
@@ -20,8 +24,10 @@ function Game() {
             onRequestClose={() => setModalIsOpen(false)}
             appElement={document.getElementById("root") || undefined}
           >
-            <button>Create Code</button>
-            <button>Enter Code</button>
+            <button>Create Room</button>
+            <input
+            value="d"/>
+            <button>Search Room</button>
             <button onClick={() => setModalIsOpen(false)}>x</button>
           </Modal>
         </li>
