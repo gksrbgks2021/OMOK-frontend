@@ -69,12 +69,6 @@ const UserSearchInput = styled.input`
   border-radius: 10px;
   padding-left: 10px;
 `;
-const UserSearchButton = styled.button`
-  width: 5%;
-  cursor: pointer;
-  color: blue;
-  bottom: 0px;
-}`;
 
 class SampleButton extends Component {
   constructor(props) {
@@ -130,57 +124,76 @@ class RequestUser extends Component {
     return (
       <div className="user">
         <User />
-
         <SampleButton text={"accept"} onClick={this.acceptFunction} />
         <SampleButton text={"decline"} onClick={this.declineFunction} />
       </div>
     );
   }
 }
-const ContentAll = () => {
-  return (
-    <div>
-      <img scr={profilePic} alt=""></img>
-      <User />
-      <User />
-    </div>
-  );
-};
-
-const ContentSearch = () => {
-  return (
-    <div id="fSearch">
-      <SearchBar />
-      <div id="userBox">
-        <SearchUser />
-        <SearchUser />
-        <SearchUser />
-        <SearchUser />
+class ContentAll extends Component {
+  render() {
+    return (
+      <div>
+        <img scr={profilePic} alt=""></img>
+        <User />
+        <User />
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
-const SearchBar = () => {
-  return (
-    <UserSearchBarDiv>
-      <UserSearchInput type="text" placeholder="search name"></UserSearchInput>
-      <UserSearchButton>Search</UserSearchButton>
-    </UserSearchBarDiv>
-  );
-};
+class ContentSearch extends Component {
+  render() {
+    return (
+      <div id="fSearch">
+        <SearchBar />
+        <div id="userBox">
+          <SearchUser />
+          <SearchUser />
+          <SearchUser />
+          <SearchUser />
+        </div>
+      </div>
+    );
+  }
+}
 
-const ContentRequests = () => {
-  return (
-    <div id="userBox">
-      <RequestUser />
-      <RequestUser />
-      <RequestUser />
-      <RequestUser />
-      <RequestUser />
-    </div>
-  );
-};
+class SearchBar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  SearchName = (e) => {
+    console.log("찾아땅!");
+    //여기서 API날리면 됨
+  };
+  render() {
+    return (
+      <UserSearchBarDiv>
+        <UserSearchInput
+          type="text"
+          placeholder="search name"
+        ></UserSearchInput>
+        <SampleButton text={"search"} onClick={this.SearchName} />
+      </UserSearchBarDiv>
+    );
+  }
+}
+
+class ContentRequests extends Component {
+  render() {
+    return (
+      <div id="userBox">
+        <RequestUser />
+        <RequestUser />
+        <RequestUser />
+        <RequestUser />
+        <RequestUser />
+      </div>
+    );
+  }
+}
 
 export const Tab = () => {
   // Tab Menu 중 현재 어떤 Tab이 선택되어 있는지 확인하기 위한 currentTab 상태와 currentTab을 갱신하는 함수가 존재해야 하고, 초기값은 0.
