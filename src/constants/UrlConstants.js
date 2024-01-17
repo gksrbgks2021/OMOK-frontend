@@ -1,5 +1,7 @@
-const backdomain = "http://127.0.0.1";
+export const backdomain = "http://localhost:8002";
 
-const URL_POST_SOCIALLOGIN = backdomain + "/api/sign";
+export const URL_POST_SOCIALLOGIN = backdomain + "/api/sign/auth";
 
-const URL_POST_CREATEROOM = backdomain + "/api/";
+export const URL_POST_CREATEROOM = backdomain + "/api/";
+
+export const URL_POST_TEST = backdomain + "/api/sign/auth/temp";

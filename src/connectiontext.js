@@ -12,7 +12,7 @@ export default function CreateReadChat() {
 
     const connect = () => {
         client.current = new StompJs.Client({
-            brokerURL: 'ws://localhost:8080/ws',
+            brokerURL: 'ws://localhost:8002/ws',
             onConnect: () => {
                 console.log('success');
                 subscribe();
