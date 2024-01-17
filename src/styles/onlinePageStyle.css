@@ -1,0 +1,89 @@
+#betting {
+  margin-top: 30px;
+}
+
+#betting-text {
+  width: 360px;
+  height: 50px;
+  font-size: larger;
+  font-weight: bolder;
+  margin-bottom: 30px;
+  /* text-align: center; */
+  line-height: 50px;
+  background-color: #f4f4f4;
+}
+
+#coin {
+  width: 300px;
+  height: 100px;
+  margin-bottom: 30px;
+  border-radius: 30px;
+  margin: auto;
+  margin-bottom: 20px;
+  text-align: center;
+  line-height: 100px;
+  font-size: 30px;
+  font-weight: bolder;
+  box-shadow: 3px 3px 3px 3px gray;
+
+  background-color: #ffefd0;
+}
+
+#minus {
+  background-color: skyblue;
+  width: 100px;
+  height: 40px;
+  color: blue;
+  border-radius: 10px;
+  font-size: larger;
+  margin-left: 56px;
+}
+
+#plus {
+  background-color: pink;
+  width: 100px;
+  height: 40px;
+  border-radius: 10px;
+  font-size: larger;
+  color: red;
+}
+
+#invitation {
+}
+
+#invitation-text {
+  margin: 10px 0 0 0;
+  width: 360px;
+  height: 50px;
+  font-size: larger;
+  font-weight: bolder;
+  line-height: 50px;
+  background-color: #f4f4f4;
+}
+
+#create-code {
+  width: 300px;
+  height: 50px;
+  margin: 30px;
+  border-radius: 10px;
+  font-size: larger;
+  font-weight: bolder;
+  background-color: #fce444;
+}
+
+#enter-code {
+  border: 0.5px solid gray;
+  width: 300px;
+  height: 50px;
+  color: gray;
+  margin-left: 30px;
+}
+
+#start {
+  width: 300px;
+  height: 40px;
+  margin-left: 30px;
+  border-radius: 5px;
+  font-size: large;
+  background-color: #fce444;
+}

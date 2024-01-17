@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import GomokuBoard from "./components/GomokuBoard.tsx";
+import Online from "./pages/online.js";
 import Main from "./pages/main.js";
 import Game from "./pages/game.js";
 import Tab from "./pages/friend.js";
@@ -31,6 +32,7 @@ function App() {
             <Route path="/profile" element={<Profile />} />
 
             <Route path="/game/offline" element={<GomokuBoard />} />
+            <Route path="/game/online" element={<Online />} />
             <Route path="/*" element={"Not Found"} />
           </Routes>
         </div>
