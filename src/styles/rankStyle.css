@@ -5,21 +5,22 @@
 
 #block {
   display: flex;
+  margin-top: 50px;
 }
 
 #others {
   display: flex;
   background-color: #ebcf97;
   border-radius: 10% 10% 0 0;
-  width: 360px;
-  height: 360px;
-  /* bottom: 400px; */
+  width: 100%;
+  height: 760px;
+
 }
 
 #first {
   background-color: #f2cd6e;
   border-radius: 15% 15% 0 0;
-  width: 60px;
+  width: 80px;
   height: 160px;
   margin-left: 20px;
 }
@@ -27,17 +28,17 @@
 #second {
   background-color: #d9d9d9;
   border-radius: 15% 15% 0 0;
-  width: 60px;
-  height: 120px;
-  margin-top: 40px;
-  margin-left: 60px;
+  width: 80px;
+  height: 110px;
+  margin-top: 50px;
+  margin-left: 40px;
 }
 
 #third {
   background-color: #b28c41;
   border-radius: 15% 15% 0 0;
-  width: 60px;
-  height: 60px;
-  margin-top: 100px;
+  width: 80px;
+  height: 80px;
+  margin-top: 80px;
   margin-left: 20px;
 }

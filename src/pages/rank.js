@@ -32,12 +32,15 @@ function Rank() {
       <div id="block">
         <div id="second">
           <User />
+          <h1>2</h1>
         </div>
         <div id="first">
           <User />
+          <h1>1</h1>
         </div>
         <div id="third">
           <User />
+          <h1>3</h1>
         </div>
       </div>
       <div id="others">

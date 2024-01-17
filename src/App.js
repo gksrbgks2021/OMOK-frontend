@@ -5,6 +5,7 @@ import Main from "./pages/main.js";
 import Game from "./pages/game.js";
 import Tab from "./pages/friend.js";
 import Rank from "./pages/rank.js";
+import Rank2 from "./pages/rank2";
 import Profile from "./pages/profile.js";
 import NavigationBar from "./NavigationBar.js";
 import StatusBar from "./StatusBar.js";
