@@ -10,6 +10,7 @@ import NavigationBar from "./NavigationBar.js";
 import StatusBar from "./StatusBar.js";
 import "./App.css";
 
+
 function App() {
   const [showMain, setShowMain] = useState(true);
   const handleButtonClick = () => {
