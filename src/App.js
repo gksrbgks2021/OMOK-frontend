@@ -40,6 +40,10 @@ function App() {
     })
         .then(response => {
           console.log(`응답: `, response);
+          let data = response.data;
+          if(response.data){
+            console.log('data',data);
+          }
         })
         .catch(error => {
           console.error("Error during POST request:", error);
