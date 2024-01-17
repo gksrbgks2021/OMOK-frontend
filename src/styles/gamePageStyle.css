@@ -11,6 +11,13 @@ input {
   border: none;
 }
 
+#myinput {
+  border: 2px solid blue;
+}
+
+#container {
+  display: flex;
+}
 #offlineBtn {
   background-image: url(./icon/homePage/offlineBtn.png);
   background-size: cover;
@@ -23,4 +30,8 @@ input {
   background-size: cover;
   width: 240px;
   height: 72px;
+}
+
+#modalBtn {
+  border: 2px solid red;
 }

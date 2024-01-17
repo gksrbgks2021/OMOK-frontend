@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-
+import ConnectionText from "./connectiontext";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 
@@ -11,6 +11,7 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <App />
+      {/*  <ConnectionText/>*/}
     </BrowserRouter>
   </React.StrictMode>
 );
