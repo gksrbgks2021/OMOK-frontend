@@ -6,12 +6,15 @@
 #block {
   display: flex;
   margin-top: 50px;
+  justify-content: space-around;
 }
 
 #box {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 80px;
+  height: 100%;
 }
 
 #others {
@@ -27,7 +30,10 @@
   border-radius: 15% 15% 0 0;
   width: 80px;
   height: 160px;
-  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #second {
@@ -35,8 +41,6 @@
   border-radius: 15% 15% 0 0;
   width: 80px;
   height: 110px;
-  /* margin-top: 50px;
-  margin-left: 40px; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -49,5 +53,4 @@
   width: 80px;
   height: 80px;
   margin-top: 80px;
-  margin-left: 20px;
 }

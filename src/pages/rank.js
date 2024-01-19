@@ -1,4 +1,3 @@
-
 import "../styles/rankStyle.css";
 import User from "../components/User";
 import React, { Component } from "react";
@@ -35,14 +34,17 @@ function Rank() {
             <h1>2</h1>
           </div>
         </div>
-
-        <div id="first">
+        <div id="box">
           <User />
-          <h1>1</h1>
+          <div id="first">
+            <h1>1</h1>
+          </div>
         </div>
-        <div id="third">
+        <div id="box">
           <User />
-          <h1>3</h1>
+          <div id="third">
+            <h1>3</h1>
+          </div>
         </div>
       </div>
       <div id="others">
