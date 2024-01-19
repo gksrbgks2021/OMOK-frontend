@@ -8,13 +8,18 @@
   margin-top: 50px;
 }
 
+#box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 #others {
   display: flex;
   background-color: #ebcf97;
   border-radius: 10% 10% 0 0;
   width: 100%;
   height: 760px;
-
 }
 
 #first {
@@ -30,8 +35,12 @@
   border-radius: 15% 15% 0 0;
   width: 80px;
   height: 110px;
-  margin-top: 50px;
-  margin-left: 40px;
+  /* margin-top: 50px;
+  margin-left: 40px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #third {
