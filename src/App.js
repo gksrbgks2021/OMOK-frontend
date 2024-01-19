@@ -35,7 +35,7 @@ function App() {
         handleGuestLogin();
         break;
     }
-    setShowMain(!isShowMain);
+    setShowMain(!showMain);
   };
 
   const handleGoogleLogin = () => {
