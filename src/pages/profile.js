@@ -2,12 +2,11 @@ import User from "../components/User";
 import { useNavigate } from "react-router-dom";
 import NavigationBar from "../NavigationBar.js";
 import StatusBar from "../StatusBar.js";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const ProfileContainer = styled.div`
   display: flex;
   flex-direction: column;
-
 `;
 
 const LogoutContainer = styled.div`
@@ -17,9 +16,7 @@ const LogoutContainer = styled.div`
   margin-top: 100px;
 `;
 
-
 function Profile(props) {
-
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -53,9 +50,7 @@ function Profile(props) {
         White Stats<br></br> 10G 6W 4L 0D (60%) {props.white}
       </div>
       <hr></hr>
-      <LogoutContainer onClick={handleLogout}>
-        logout
-      </LogoutContainer>
+      <LogoutContainer onClick={handleLogout}>logout</LogoutContainer>
     </ProfileContainer>
   );
 }

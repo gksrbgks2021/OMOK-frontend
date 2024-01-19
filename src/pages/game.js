@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../styles/gamePageStyle.css";
 import NavigationBar from "../NavigationBar.js";
 import StatusBar from "../StatusBar.js";
+import * as StompJs from "@stomp/stompjs";
 
 function Game() {
   return (
-    
     <div className="body">
       <StatusBar />
       <NavigationBar />
