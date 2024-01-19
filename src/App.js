@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import GomokuBoard from "./components/GomokuBoard.tsx";
 import Online from "./pages/online.js";
 import Main from "./pages/main.js";
@@ -15,8 +15,15 @@ import axios from "axios";
 import { URL_POST_TEST } from "./constants/UrlConstants";
 
 function App() {
-  const [isShowMain, setShowMain] = useState(true);
+  const navigate = useNavigate();
+  const [isShowMain, setShowMain] = useState(() => {
+    // 로컬 스토리지에서 showMain 상태를 불러오기
+    const storedShowMain = localStorage.getItem("showMain");
+    return storedShowMain ? JSON.parse(storedShowMain) : true;
+  });
   const handleButtonClick = (category) => {
+
+    console.log('hi');
     switch (category) {
       case GOOGLE:
         handleGoogleLogin();
@@ -27,8 +34,13 @@ function App() {
         handleGuestLogin();
         break;
     }
-    setShowMain(!isShowMain);
+    setShowMain(isShowMain, JSON.stringify(false));
+    navigate('/game');
   };
+  useEffect(() => {
+    // showMain 상태가 변경될 때 로컬 스토리지에 저장
+    localStorage.setItem("showMain", JSON.stringify(isShowMain));
+  }, [isShowMain]);
   const handleGoogleLogin = () => {
     const url = URL_POST_TEST;
     console.log(URL_POST_TEST);
@@ -58,17 +70,18 @@ function App() {
   ) : (
     <div className="App">
       <div className="screen">
-        <StatusBar />
-        <NavigationBar />
+        {/* <StatusBar />
+        <NavigationBar /> */}
         <Routes>
-          <Route path="/game" element={<Game />} />
+          <Route path="/Game" element={<Game />} />
           <Route path="/friend" element={<Tab />} />
           <Route path="/rank" element={<Rank />} />
           <Route path="/profile" element={<Profile />} />
 
           <Route path="/game/offline" element={<GomokuBoard />} />
           <Route path="/game/online" element={<Online />} />
-          <Route path="/*" element={"Not Found"} />
+          <Route path="/" element={<Main onButtonClick={handleButtonClick}/>}/>
+
         </Routes>
       </div>
     </div>

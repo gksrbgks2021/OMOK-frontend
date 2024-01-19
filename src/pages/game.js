@@ -1,10 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/gamePageStyle.css";
+import NavigationBar from "../NavigationBar.js";
+import StatusBar from "../StatusBar.js";
 
 function Game() {
   return (
+    
     <div className="body">
+      <StatusBar />
+      <NavigationBar />
       <h2>Game</h2>
       <ul>
         <li>

@@ -4,6 +4,8 @@ import { styled } from "styled-components";
 import "./friend.css";
 import profilePic from "../components/icon/user-circle.png";
 import User from "../components/User";
+import NavigationBar from "../NavigationBar.js";
+import StatusBar from "../StatusBar.js";
 
 const TabNav = styled.ul`
   display: flex;
@@ -214,6 +216,8 @@ export const Tab = () => {
   return (
     <>
       <div>
+      <StatusBar />
+        <NavigationBar />
         <TabBack>
           <TabNav>
             {menuArr.map((el, index) => (
