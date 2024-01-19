@@ -11,69 +11,35 @@ import Profile from "./pages/profile.js";
 import NavigationBar from "./NavigationBar.js";
 import StatusBar from "./StatusBar.js";
 import "./App.css";
-import { GOOGLE, KAKAO, GUEST } from "./constants/VARIABLE";
-import axios from "axios";
-import { URL_POST_TEST } from "./constants/UrlConstants";
 
 function App() {
-  const [isShowMain, setShowMain] = useState(true);
-  const handleButtonClick = (category) => {
-    switch (category) {
-      case GOOGLE:
-        handleGoogleLogin();
-        break;
-      case KAKAO:
-        break;
-      case GUEST:
-        handleGuestLogin();
-        break;
-    }
-    setShowMain(!isShowMain);
+  const [showMain, setShowMain] = useState(true);
+  const handleButtonClick = () => {
+    setShowMain(!showMain);
   };
-  const handleGoogleLogin = () => {
-    const url = URL_POST_TEST;
-    console.log(URL_POST_TEST);
-    axios({
-      method: "post",
-      url: url,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => {
-        console.log(`응답: `, response);
-        let data = response.data;
-        if (response.data) {
-          console.log("data", data);
-        }
-      })
-      .catch((error) => {
-        console.error("Error during POST request:", error);
-      });
-  };
-  const handleGuestLogin = () => {
-    console.log("게스트 로그인 처리합니다");
-  };
-  return isShowMain ? (
-    <Main onButtonClick={handleButtonClick} />
-  ) : (
-    <div className="App">
-      <div className="screen">
-        <StatusBar />
-        <NavigationBar />
-        <Routes>
-          <Route path="/game" element={<Game />} />
-          <Route path="/friend" element={<Tab />} />
-          <Route path="/rank" element={<Rank />} />
-          <Route path="/profile" element={<Profile />} />
 
-          <Route path="/game/offline" element={<GomokuBoard />} />
-          <Route path="/game/online" element={<Online />} />
-          <Route path="/*" element={"Not Found"} />
-        </Routes>
+  if (showMain) {
+    return <Main onButtonClick={handleButtonClick} />;
+  } else {
+    return (
+      <div className="App">
+        <div className="screen">
+          <StatusBar />
+          <NavigationBar />
+          <Routes>
+            <Route path="/game" element={<Game />} />
+            <Route path="/friend" element={<Tab />} />
+            <Route path="/rank" element={<Rank />} />
+            <Route path="/profile" element={<Profile />} />
+
+            <Route path="/game/offline" element={<GomokuBoard />} />
+            <Route path="/game/online" element={<Online />} />
+            <Route path="/*" element={"Not Found"} />
+          </Routes>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 /*
@@ -86,4 +52,5 @@ function App() {
     setScreenSize();
   });
   */
+
 export default App;
