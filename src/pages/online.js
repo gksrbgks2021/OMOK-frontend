@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "../styles/onlinePageStyle.css";
-
 import * as StompJs from "@stomp/stompjs";
+
 function Online() {
   const [counter, setCounter] = useState(100);
   const [content, setContent] = useState("");
