@@ -2,8 +2,11 @@
 import "../styles/rankStyle.css";
 import User from "../components/User";
 import React, { Component } from "react";
+import NavigationBar from "../NavigationBar.js";
+import StatusBar from "../StatusBar.js";
 import { useState } from "react";
 import { styled } from "styled-components";
+
 
 // const Place = styled.div`
 //   background-color: #f2cd6e;
@@ -27,6 +30,8 @@ import { styled } from "styled-components";
 function Rank() {
   return (
     <div id="wrapper">
+      <StatusBar />
+      <NavigationBar />
       <h2>Rank</h2>
       <div id="block">
         <div id="box">
