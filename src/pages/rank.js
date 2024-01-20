@@ -1,30 +1,7 @@
 import "../styles/rankStyle.css";
 import User from "../components/User";
-import React, { Component } from "react";
 import NavigationBar from "../NavigationBar.js";
 import StatusBar from "../StatusBar.js";
-import { useState } from "react";
-import { styled } from "styled-components";
-
-
-// const Place = styled.div`
-//   background-color: #f2cd6e;
-//   border-radius: 15% 15% 0 0;
-//   width: 60px;
-//   height: 160px;
-//   margin-left: 20px;
-// `;
-//
-// class UserRank extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {};
-//   }
-//
-//   render() {
-//     return <User />;
-//   }
-// }
 
 function Rank() {
   return (
@@ -54,9 +31,18 @@ function Rank() {
       </div>
       <div id="others">
         <li>
-          <User />
-          <User />
-          <User />
+          <div id="rankNum">
+            <h3>4</h3>
+            <User />
+          </div>
+          <div id="rankNum">
+            <h3>5</h3>
+            <User />
+          </div>
+          <div id="rankNum">
+            <h3>6</h3>
+            <User />
+          </div>
         </li>
       </div>
     </div>
