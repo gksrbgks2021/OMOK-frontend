@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import "../styles/onlinePageStyle.css";
 import * as StompJs from "@stomp/stompjs";
+import PopUp from "./modal";
+import { Route, Router, Routes, useNavigate } from "react-router-dom";
 
 function Online() {
   const [counter, setCounter] = useState(100);
@@ -62,6 +64,7 @@ function Online() {
   const updateCounter = (value) => {
     setCounter((prevCounter) => prevCounter + value);
   };
+
   return (
     <div>
       <div id="betting">
