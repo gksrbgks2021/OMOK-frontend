@@ -65,7 +65,7 @@ function Online() {
   return (
     <div>
       <div id="betting">
-        <div id="betting-text">Entry Fee (betting)</div>
+        <div id="betting-text">Entry Fee (Betting)</div>
         <div id="coin">{counter}</div>
         <button id="minus" onClick={() => updateCounter(-10)}>
           -
@@ -76,13 +76,17 @@ function Online() {
       </div>
       <div id="invitation">
         <div id="invitation-text">Game invitation</div>
-        <button id="create-code">Generate Room Code</button>
+
+        <h3 id="explaination">make a room</h3>
+        <button id="button">Generate Room Code</button>
+
+        <h3 id="explaination">join an existing room</h3>
         <input
           id="enter-code"
           type="text"
           placeholder="Enter Friend Code..."
         ></input>
-        <button id="start">Start Game!</button>
+        <button id="button">Start Game!</button>
       </div>
     </div>
   );
