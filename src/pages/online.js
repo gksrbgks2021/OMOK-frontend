@@ -80,11 +80,9 @@ function Online() {
       <div id="invitation">
         <div id="invitation-text">Game invitation</div>
         <h3 id="explaination">make a room</h3>
-        <Link to="/modal">
-          <button id="button" onClick={getModal}>
-            Generate Room Code
-          </button>
-        </Link>
+        <button id="button" onClick={getModal}>
+          Generate Room Code
+        </button>
         <h3 id="explaination">join an existing room</h3>
         <input
           id="enter-code"
