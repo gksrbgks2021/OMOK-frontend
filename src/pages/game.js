@@ -3,6 +3,7 @@ import "../styles/gamePageStyle.css";
 import NavigationBar from "../NavigationBar.js";
 import StatusBar from "../StatusBar.js";
 
+
 function Game() {
   return (
     <div className="body">

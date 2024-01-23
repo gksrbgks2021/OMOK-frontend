@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import "../styles/onlinePageStyle.css";
 import * as StompJs from "@stomp/stompjs";
 import PopUp from "./modal";
-import { Route, Router, Routes, useNavigate } from "react-router-dom";
+import { Route, Router, Routes, useNavigate, Link } from "react-router-dom";
 
 function Online() {
   const [counter, setCounter] = useState(100);
@@ -65,6 +65,7 @@ function Online() {
     setCounter((prevCounter) => prevCounter + value);
   };
 
+  const getModal = () => {};
   return (
     <div>
       <div id="betting">
@@ -79,10 +80,12 @@ function Online() {
       </div>
       <div id="invitation">
         <div id="invitation-text">Game invitation</div>
-
         <h3 id="explaination">make a room</h3>
-        <button id="button">Generate Room Code</button>
-
+        <Link to="/modal">
+          <button id="button" onClick={getModal}>
+            Generate Room Code
+          </button>
+        </Link>
         <h3 id="explaination">join an existing room</h3>
         <input
           id="enter-code"
