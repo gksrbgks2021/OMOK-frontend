@@ -6,10 +6,13 @@ import { URL_POST_SOCIALLOGIN, URL_POST_TEST } from "../constants/UrlConstants";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { showMain, hideMain } from "../stores/MainReducer";
+import authReducer, { signupSuccess } from "../stores/AuthReducer";
+import { createStore } from "redux";
 
 function Main() {
   const [isShowMain, setShowMain] = useState(true);
   const navigate = useNavigate();
+  const store = createStore(authReducer);
 
   const dispatch = useDispatch();
 
@@ -45,6 +48,7 @@ function Main() {
         let data = response.data;
         if (response.data) {
           console.log("data", data);
+          dispatch(signupSuccess(data));
         }
       })
       .catch((error) => {
