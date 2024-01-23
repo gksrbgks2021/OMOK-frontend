@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import "../styles/onlinePageStyle.css";
 import * as StompJs from "@stomp/stompjs";
-import PopUp from "./modal";
 import { Route, Router, Routes, useNavigate, Link } from "react-router-dom";
 
 function Online() {

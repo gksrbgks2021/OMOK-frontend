@@ -14,7 +14,6 @@ import { GOOGLE, KAKAO, GUEST } from "./constants/VARIABLE";
 import axios from "axios";
 import { URL_POST_TEST, URL_POST_SOCIALLOGIN } from "./constants/UrlConstants";
 import { useDispatch, useSelector } from "react-redux";
-import PopUp from "./pages/modal";
 
 function App() {
   const dispatch = useDispatch();
@@ -40,7 +39,6 @@ function App() {
 
               <Route path="/game/offline" element={<GomokuBoard />} />
               <Route path="/game/online" element={<Online />} />
-              <Route path="./pages/modal" element={<PopUp/>}/>
               <Route path="/*" element={"Not Found"} />
             </Routes>
           </>
