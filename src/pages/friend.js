@@ -51,7 +51,7 @@ const TabBack = styled.div`
 `;
 
 const ButtonContainer = styled.button`
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
   background-color: white;
   margin: 0px;
@@ -63,12 +63,12 @@ const UserSearchBarDiv = styled.div`
   border: 1px solid black;
   border-radius: 10px;
   margin-bottom: 20px;
+  display: flex;
+  justify-content: space-around;
 `;
 const UserSearchInput = styled.input`
-  cursor: pointer;
   height: 100%;
-  width: 95%;
-  border-radius: 10px;
+  width: 60%;
   padding-left: 10px;
 `;
 
