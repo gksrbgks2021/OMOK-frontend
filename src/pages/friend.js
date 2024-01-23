@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { useState } from "react";
 import { styled } from "styled-components";
-import "./friend.css";
+import "../styles/friend.css";
 import profilePic from "../components/icon/user-circle.png";
 import User from "../components/User";
 import NavigationBar from "../NavigationBar.js";
@@ -216,7 +216,7 @@ export const Tab = () => {
   return (
     <>
       <div>
-      <StatusBar />
+        <StatusBar />
         <NavigationBar />
         <TabBack>
           <TabNav>
