@@ -132,17 +132,6 @@ class RequestUser extends Component {
     );
   }
 }
-class ContentAll extends Component {
-  render() {
-    return (
-      <div>
-        <img scr={profilePic} alt=""></img>
-        <User />
-        <User />
-      </div>
-    );
-  }
-}
 
 class ContentSearch extends Component {
   render() {
@@ -202,7 +191,6 @@ export const Tab = () => {
   const [currentTab, clickTab] = useState(0);
 
   const menuArr = [
-    { name: "All", content: <ContentAll /> },
     { name: "Search", content: <ContentSearch /> },
     { name: "Requests", content: <ContentRequests /> },
   ];
