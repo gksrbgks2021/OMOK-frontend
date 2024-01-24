@@ -53,12 +53,10 @@ function Game() {
       }),
     })
   }
-
   const disConnect = () => {
     if (client.current.connected)
       client.current.deactivate();
   }
-
   const handleCreateRoom = () => {
     console.log("버튼 클릭됨");
   };

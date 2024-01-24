@@ -18,10 +18,6 @@ function App() {
     const dispatch = useDispatch();
     const hideMain = useSelector(state => state.main.isMainShown);
 
-    useEffect(() => {
-        console.log("변경됨..: ", hideMain);
-
-    }, [hideMain]);
     return (
 
             <div className="App">
