@@ -1,7 +1,5 @@
 // AuthReducer.js
 
-
-
 const SHOW_MAIN = "SHOW_MAIN";
 const HIDE_MAIN = "HIDE_MAIN";
 // Initial state
