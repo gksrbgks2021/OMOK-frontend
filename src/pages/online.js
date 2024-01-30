@@ -118,7 +118,6 @@ function Online() {
     setCounter((prevCounter) => prevCounter + value);
   };
 
-  const getModal = () => {};
   return (
     <div>
       <div id="betting">
@@ -134,7 +133,7 @@ function Online() {
       <div id="invitation">
         <div id="invitation-text">Game invitation</div>
         <h3 id="explaination">make a room</h3>
-        <button id="button" onClick={getModal}>
+        <button id="button" onClick={handleCreateRoom}>
           Generate Room Code
         </button>
         <h3 id="explaination">join an existing room</h3>
