@@ -17,6 +17,7 @@ const GomokuBoard: React.FC = () => {
       setCellState(newCellState);
       setTurn(turn === 0 ? 1 : 0);
     }
+    // <Countdown turn={turn}/>;
   };
 
   const boardSize = 15;
@@ -41,18 +42,14 @@ const GomokuBoard: React.FC = () => {
 
   return (
     <div>
-      <div id="counter">
-        <Countdown />
-      </div>
+      <div id="counter">{/* <Countdown /> */}</div>
       <h3>Current Player:</h3>
       <div id="contain_board">
         <div className="board">{board}</div>
         {/* Adding a 320x320px rectangle */}
         <div id="back_board"></div>
       </div>
-      <div id="counter">
-        <Countdown />
-      </div>
+      <div id="counter"></div>
     </div>
   );
 };
