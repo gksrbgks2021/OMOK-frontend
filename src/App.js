@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {Route, Router, Routes, useNavigate} from "react-router-dom";
 import GomokuBoard from "./components/GomokuBoard.tsx";
+import OnlineBoard from "./pages/onlineGame";
 import MainPage from "./pages/Main.js";
 import Game from "./pages/game.js";
 import Tab from "./pages/friend.js";
@@ -13,6 +14,7 @@ import {GOOGLE, KAKAO, GUEST} from "./constants/VARIABLE";
 import axios from "axios";
 import {URL_POST_TEST, URL_POST_SOCIALLOGIN} from "./constants/UrlConstants"
 import {useDispatch, useSelector} from "react-redux";
+import OnlineGame from "./pages/onlineGame";
 
 function App() {
     const dispatch = useDispatch();
@@ -32,13 +34,13 @@ function App() {
                                 <Route path="/rank" element={<Rank/>}/>
                                 <Route path="/profile" element={<Profile/>}/>
                                 <Route path="/game/offline" element={<GomokuBoard/>}/>
+                                <Route path="/game/online" element={<OnlineGame/>}/>
                             </Routes>
                         </>
                     )}
                 </div>
             </div>
-)
-    ;
+);
 }
 
 /*

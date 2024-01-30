@@ -1,10 +1,10 @@
 import {useRef,useEffect, useState} from "react";
 import Modal from "react-modal";
-import { Link } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import "../styles/gamePageStyle.css";
 import * as StompJs from "@stomp/stompjs";
 import axios from "axios";
-import {URL_GET_GETALLROOM} from "../constants/UrlConstants";
+import {URL_GET_GETALLROOM,URL_POST_CREATEROOM} from "../constants/UrlConstants";
 
 function Game() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -14,6 +14,8 @@ function Game() {
 
   const messageField = useRef(null);
   const myChatRoom = null;
+  const navigate = useNavigate();
+
   const connect = () => {
     /*client 객체를 만듭니다.*/
     client.current = new StompJs.Client({
@@ -52,10 +54,11 @@ function Game() {
     return () => disConnect();
   }, []);
 
+  /*모달창이 열리면, 채팅방 리스트 요청을 합니다.*/
   useEffect(() => {
     if(modalIsOpen){
       console.log("get all chatroom 요청");
-      /*전송 요청을 합니다.*/
+
       axios({
         method: "get",
         url: URL_GET_GETALLROOM,
@@ -85,9 +88,9 @@ function Game() {
     let message = messageField.current.value;
     console.log("메시지 전송 요청", message);
     /*메시지를 보냅니다.*/
-    client.current.send();
+
     client.current.publish({
-      destination: '/app/hello',
+      destination: '/app/message',
       body: JSON.stringify({
         message: message
       }),
@@ -99,6 +102,32 @@ function Game() {
   }
   const handleCreateRoom = () => {
     console.log("버튼 클릭됨");
+    const formData = new URLSearchParams();
+    let name = "1 님의 방";
+    formData.append('name', name);
+
+    axios({
+      method: "post",
+      url: URL_POST_CREATEROOM,
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: {
+        name: formData
+      },
+    })
+        .then(response => {
+          console.log(`응답: `, response);
+          let data = response.data;
+        })
+        .catch(error => {
+          console.error("Error during post request:", error);
+        });
+    navigate('/game/online');
+  };
+  const handleRoomClick = () => {
+
+    navigate('/game/online');
   };
   return (
     <div className="body">
@@ -132,9 +161,9 @@ function Game() {
             </div>
             <div id = "list_room">
               {chatRoomData && Object.keys(chatRoomData).map(channel => (
-                    <div key={channel}>
+                    <div key={channel} onClick={handleRoomClick}>
                       <p>Channel Name: {channel}</p>
-                      <p>{JSON.stringify(chatRoomData[channel])}</p>
+                      <p>{JSON.stringify(chatRoomData[channel]['name'])}</p>
                     </div>
                 ))}
             </div>
