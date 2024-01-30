@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../styles/GomokuBoard.css";
+import Countdown from "./offline";
 
 const GomokuBoard: React.FC = () => {
   const [turn, setTurn] = useState<number>(0);
@@ -39,10 +40,19 @@ const GomokuBoard: React.FC = () => {
   }
 
   return (
-    <div id="contain_board">
-      <div className="board">{board}</div>
-      {/* Adding a 320x320px rectangle */}
-      <div id="back_board"></div>
+    <div>
+      <div id="counter">
+        <Countdown />
+      </div>
+      <h3>Current Player:</h3>
+      <div id="contain_board">
+        <div className="board">{board}</div>
+        {/* Adding a 320x320px rectangle */}
+        <div id="back_board"></div>
+      </div>
+      <div id="counter">
+        <Countdown />
+      </div>
     </div>
   );
 };
