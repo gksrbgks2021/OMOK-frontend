@@ -6,7 +6,7 @@ import "../styles/offline.css";
 const ChessClock = () => {
   const [whiteTime, setWhiteTime] = useState(600);
   const [blackTime, setBlackTime] = useState(600);
-  const isBlackTurn = useSelector((state) => state.isBlackTurn);
+  const isBlackTurn = useSelector((state) => state.turn.isBlack);
   const dispatch = useDispatch();
   const [timerInterval, setTimerInterval] = useState(null);
 
@@ -37,6 +37,7 @@ const ChessClock = () => {
 
   return (
     <div>
+      <hr></hr>
       <hr></hr>
       <div>White: {formatTime(whiteTime)}</div>
       <div>Black: {formatTime(blackTime)}</div>

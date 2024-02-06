@@ -1,16 +1,22 @@
 import { combineReducers } from "redux";
 
-const isBlackTurnReducer = (state = true, action) => {
+const initialState = { isBlack: true };
+
+const isBlackTurnReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "changeTurn":
-      console.log("change! : ", state);
-      return !state;
+    case "blackTurn":
+      return {
+        ...state,
+        isBlack: false,
+      };
+    case "whiteTurn":
+      return {
+        ...state,
+        isBlack: true,
+      };
     default:
-      console.log("default! : ", state);
       return state;
   }
 };
 
-export default combineReducers({
-  isBlackTurn: isBlackTurnReducer,
-});
+export default isBlackTurnReducer;

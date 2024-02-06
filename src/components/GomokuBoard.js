@@ -5,7 +5,7 @@ import Countdown from "../pages/offline";
 
 const GomokuBoard = () => {
   const dispatch = useDispatch();
-  const isBlackTurn = useSelector((state) => state.isBlackTurn);
+  const isBlackTurn = useSelector((state) => state.turn.isBlack);
   const [turn, setTurn] = useState(true); //turn 0 == black, 1 == white
   const [cellState, setCellState] = useState(
     Array.from({ length: 15 }, () => Array(15).fill(null))
@@ -17,7 +17,11 @@ const GomokuBoard = () => {
     if (cellState[i][j] === null) {
       const newCellState = [...cellState];
       newCellState[i][j] = turn;
-      dispatch({ type: "changeTurn" });
+      if (isBlackTurn === true) {
+        dispatch({ type: "blackTurn" });
+      } else {
+        dispatch({ type: "whiteTurn" });
+      }
       setCellState(newCellState);
       setTurn(turn === true ? false : true);
     }
