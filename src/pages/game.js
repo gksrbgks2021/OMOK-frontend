@@ -12,9 +12,18 @@ function Game() {
   const [chatRoomData, setChatRoomData] = useState([]);
   const client = useRef({});
 
+  const subscribes = useState([]); // 구독 리스트를 저장해서, 구독 취소할때 사용.
   const messageField = useRef(null);
   const myChatRoom = null;
   const navigate = useNavigate();
+
+  const subscribeCancle = () => {
+    let length = subscribes.length;
+    for(let i = 0 ; i < length; i++){
+      let sid = subscribes.pop();
+      client.current.unsubscribe(sid.id);
+    }
+  }
 
   const connect = () => {
     /*client 객체를 만듭니다.*/
@@ -92,7 +101,10 @@ function Game() {
     client.current.publish({
       destination: '/app/message',
       body: JSON.stringify({
-        message: message
+        message: message,
+        senderId: "mysender",
+        chatRoomId: "채팅방1",
+        messageType: "TALK",
       }),
     })
   }
@@ -113,7 +125,7 @@ function Game() {
         'Content-Type': 'application/json'
       },
       data: {
-        name: formData
+        name:name
       },
     })
         .then(response => {

@@ -1,0 +1,48 @@
+#fSearch {
+  width: 80%;
+  margin-top: 20px;
+  margin-left: 10%;
+  border-radius: 10px;
+}
+
+#fSearch > button {
+  cursor: pointer;
+  color: blue;
+  margin-bottom: 20px;
+}
+
+#fSearch > input {
+  cursor: pointer;
+  height: 40px;
+  border: 1px solid black;
+  width: 100%;
+  border-radius: 10px;
+  padding-left: 10px;
+}
+
+#userBox {
+  border-style: solid;
+  height: 400px;
+  border-radius: 5px;
+  background-color: rgba(236, 235, 235, 0.878);
+}
+
+.divider {
+  border-top: 3px solid white;
+  border-bottom: none;
+  margin: 5% 10% 5% 10%;
+}
+
+.user {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  line-height: 30px;
+  border-bottom: 1px solid white;
+}
+.sButton {
+  border: solid black 1px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0px;
+}

@@ -1,8 +1,11 @@
-import React from "react";
+import React, { Component } from "react";
 import { useState } from "react";
 import { styled } from "styled-components";
-import "./friend.css";
+import "../styles/friend.css";
 import profilePic from "../components/icon/user-circle.png";
+import User from "../components/User";
+import NavigationBar from "../NavigationBar.js";
+import StatusBar from "../StatusBar.js";
 
 const TabNav = styled.ul`
   display: flex;
@@ -16,13 +19,14 @@ const TabNav = styled.ul`
     font-size: 15px;
     transition: 0.5s;
     border-radius: 10px 10px 0px 0px;
-    background-color: grey;
+    background-color: lightgrey;
     cursor: pointer;
   }
 
   .focused {
     //선택된 Tabmenu 에만 적용되는 CSS를 구현
     background-color: rgb(255, 255, 255);
+    border-bottom: none;
     // color: rgb(21, 20, 20);
   }
 `;
@@ -46,32 +50,149 @@ const TabBack = styled.div`
   background-color: grey;
 `;
 
-const ContentAll = () => {
-  return (
-    <div>
-      <img scr={profilePic} alt=""></img>
-      content All user01 user02
-    </div>
-  );
-};
+const ButtonContainer = styled.button`
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: white;
+  margin: 0px;
+`;
+const UserSearchBarDiv = styled.div`
+  width: 100%;
+  height: 40px;
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-around;
+`;
+const UserSearchInput = styled.input`
+  height: 100%;
+  width: 60%;
+  padding-left: 10px;
+`;
 
-const ContentSearch = () => {
-  return (
-    <div id="fSearch">
-      <input type="text" placeholder="search name"></input>
-      <button id="fButton">Search</button>
-    </div>
-  );
-};
+class SampleButton extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  render() {
+    return (
+      <ButtonContainer onClick={this.props.onClick}>
+        {this.props.text}
+      </ButtonContainer>
+    );
+  }
+}
+
+class SearchUser extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+  sendRequestFunction = (e) => {
+    console.log("우왕");
+    //여기서 API날리면 됨
+  };
+
+  render() {
+    return (
+      <div className="user">
+        <User />
+        <SampleButton
+          text={"send request"}
+          onClick={this.sendRequestFunction}
+        />
+      </div>
+    );
+  }
+}
+
+class RequestUser extends Component {
+  acceptFunction = (e) => {
+    console.log("우왕 받아줬당");
+    //여기서 API날리면 됨
+  };
+  declineFunction = async (e) => {
+    console.log("힝 까였어ㅠ");
+    //여기서 API날리면 됨
+    //const result = await fetch("https://server.com/api/declineFriendRequest"); 등등..
+    //result.then()
+  };
+
+  render() {
+    return (
+      <div className="user">
+        <User />
+        <SampleButton text={"accept"} onClick={this.acceptFunction} />
+        <SampleButton text={"decline"} onClick={this.declineFunction} />
+      </div>
+    );
+  }
+}
+
+class ContentSearch extends Component {
+  render() {
+    return (
+      <div id="fSearch">
+        <SearchBar />
+        <div id="userBox">
+          <SearchUser />
+          <SearchUser />
+          <SearchUser />
+          <SearchUser />
+        </div>
+      </div>
+    );
+  }
+}
+
+class SearchBar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  SearchName = (e) => {
+    console.log("찾아땅!");
+    //여기서 API날리면 됨
+  };
+  render() {
+    return (
+      <UserSearchBarDiv>
+        <UserSearchInput
+          type="text"
+          placeholder="search name"
+        ></UserSearchInput>
+        <SampleButton text={"search"} onClick={this.SearchName} />
+      </UserSearchBarDiv>
+    );
+  }
+}
+
+class ContentRequests extends Component {
+  render() {
+    return (
+      <div id="userBox">
+        <RequestUser />
+        <RequestUser />
+        <RequestUser />
+        <RequestUser />
+        <RequestUser />
+      </div>
+    );
+  }
+}
 
 export const Tab = () => {
   // Tab Menu 중 현재 어떤 Tab이 선택되어 있는지 확인하기 위한 currentTab 상태와 currentTab을 갱신하는 함수가 존재해야 하고, 초기값은 0.
   const [currentTab, clickTab] = useState(0);
 
   const menuArr = [
-    { name: "All", content: <ContentAll /> },
     { name: "Search", content: <ContentSearch /> },
-    { name: "Requests", content: "Tab menu THREE" },
+    { name: "Requests", content: <ContentRequests /> },
   ];
 
   const selectMenuHandler = (index) => {
@@ -83,11 +204,10 @@ export const Tab = () => {
   return (
     <>
       <div>
+        <StatusBar />
+        <NavigationBar />
         <TabBack>
           <TabNav>
-            {/* <li className="submenu">{menuArr[0].name}</li>
-          <li className="submenu">{menuArr[1].name}</li>
-          <li className="submenu">{menuArr[2].name}</li> */}
             {menuArr.map((el, index) => (
               <Option
                 className={index === currentTab ? "submenu focused" : "submenu"}
@@ -101,15 +221,6 @@ export const Tab = () => {
         <Desc>
           <p>{menuArr[currentTab].content}</p>
         </Desc>
-
-        {/* <ContentAll>
-          <div>user01</div>
-        </ContentAll>
-
-        <ContentSearch>
-          <input id="fSearch" type="text" placeholder="search freinds"></input>
-          <button>Search</button>
-        </ContentSearch> */}
       </div>
     </>
   );
