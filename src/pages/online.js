@@ -101,7 +101,7 @@ function Online() {
         "Content-Type": "application/json",
       },
       data: {
-        name: formData,
+        name: name,
       },
     })
       .then((response) => {
