@@ -1,20 +1,16 @@
-// Initial state
-const initialState = { isBlackTurn: false };
+import { combineReducers } from "redux";
 
-const CHANGE_TURN = "CHANGE_TURN";
-// Reducer
-const TurnReducer = (state = initialState, action) => {
+const isBlackTurnReducer = (state = true, action) => {
   switch (action.type) {
-    case CHANGE_TURN:
-      return {
-        ...state,
-        isBlackTurn: !state.isBlackTurn,
-      };
+    case "changeTurn":
+      console.log("change! : ", state);
+      return !state;
     default:
+      console.log("default! : ", state);
       return state;
   }
 };
-// Action types
 
-export const Change_Turn = () => ({ type: CHANGE_TURN });
-export default TurnReducer;
+export default combineReducers({
+  isBlackTurn: isBlackTurnReducer,
+});

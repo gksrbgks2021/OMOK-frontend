@@ -1,26 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { connect } from "react-redux";
 import "../styles/GomokuBoard.css";
-import Countdown from "./offline";
-import TurnReducer from "../stores/TurnReducer";
-import { Change_Turn } from "../stores/TurnReducer";
-import { useDispatch } from "react-redux";
+import Countdown from "../pages/offline";
 
-const GomokuBoard: React.FC = () => {
+const GomokuBoard: React.FC = (isBlackTurn) => {
+  // const isBlackTurn = useSelector((state) => state.isBlackTurn);
+  const dispatch = useDispatch();
   const [turn, setTurn] = useState<boolean>(true); //turn 0 == black, 1 == white
   const [cellState, setCellState] = useState<boolean[][]>(
     Array.from({ length: 15 }, () => Array(15).fill(null))
   );
-  const dispatch = useDispatch();
 
   const handleClick = (i: number, j: number) => {
     console.log(`Cell clicked: (${i}, ${j})`);
-
+    console.log("state: ", isBlackTurn);
     if (cellState[i][j] === null) {
       const newCellState = [...cellState];
       newCellState[i][j] = turn;
+      dispatch({ type: "changeTurn" });
       setCellState(newCellState);
-
-      dispatch(Change_Turn());
       setTurn(turn === true ? false : true);
     }
   };
@@ -52,7 +51,7 @@ const GomokuBoard: React.FC = () => {
   return (
     <div>
       <div id="counter">
-        <Countdown handleClick={turn} />
+        <Countdown />
       </div>
       <h3>Current Player:</h3>
       <div id="contain_board">
@@ -64,4 +63,8 @@ const GomokuBoard: React.FC = () => {
   );
 };
 
-export default GomokuBoard;
+const mapStateToProps = (state) => ({
+  isBlackTurn: state.isBlackTurn,
+});
+
+export default connect(mapStateToProps)(GomokuBoard);
