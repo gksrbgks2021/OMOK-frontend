@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Route, Router, Routes, useNavigate } from "react-router-dom";
-import GomokuBoard from "./components/GomokuBoard.tsx";
+import GomokuBoard from "./components/GomokuBoard.js";
 import MainPage from "./pages/main.js";
 import Game from "./pages/game.js";
 import Online from "./pages/online.js";

@@ -1,18 +1,17 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { connect } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch, connect, useSelector } from "react-redux";
 import "../styles/GomokuBoard.css";
 import Countdown from "../pages/offline";
 
-const GomokuBoard: React.FC = (isBlackTurn) => {
-  // const isBlackTurn = useSelector((state) => state.isBlackTurn);
+const GomokuBoard = () => {
   const dispatch = useDispatch();
-  const [turn, setTurn] = useState<boolean>(true); //turn 0 == black, 1 == white
-  const [cellState, setCellState] = useState<boolean[][]>(
+  const isBlackTurn = useSelector((state) => state.isBlackTurn);
+  const [turn, setTurn] = useState(true); //turn 0 == black, 1 == white
+  const [cellState, setCellState] = useState(
     Array.from({ length: 15 }, () => Array(15).fill(null))
   );
 
-  const handleClick = (i: number, j: number) => {
+  const handleClick = (i, j) => {
     console.log(`Cell clicked: (${i}, ${j})`);
     console.log("state: ", isBlackTurn);
     if (cellState[i][j] === null) {
@@ -25,9 +24,9 @@ const GomokuBoard: React.FC = (isBlackTurn) => {
   };
 
   const boardSize = 15;
-  const board = [] as any;
+  const board = [];
   for (let i = 0; i < boardSize; i++) {
-    const row = [] as any;
+    const row = [];
     for (let j = 0; j < boardSize; j++) {
       const cellClassName = `cell ${
         cellState[i][j] === true

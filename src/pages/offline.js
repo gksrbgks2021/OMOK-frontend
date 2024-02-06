@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { connect } from "react-redux";
 import "../styles/offline.css";
 
-function ChessClock({ isBlackTurn }) {
+const ChessClock = () => {
   const [whiteTime, setWhiteTime] = useState(600);
   const [blackTime, setBlackTime] = useState(600);
-  // const isBlackTurn = useSelector((state) => state.isBlackTurn);
+  const isBlackTurn = useSelector((state) => state.isBlackTurn);
   const dispatch = useDispatch();
   const [timerInterval, setTimerInterval] = useState(null);
 
@@ -43,7 +43,7 @@ function ChessClock({ isBlackTurn }) {
       <button onClick={handleTurnChange}>Change Turn</button>
     </div>
   );
-}
+};
 
 const mapStateToProps = (state) => ({
   isBlackTurn: state.isBlackTurn,
