@@ -1,83 +1,100 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useSelector } from "react";
 import { useRef } from "react";
 import { useState } from "react";
+import TurnReducer from "../stores/TurnReducer";
+import { Change_Turn } from "../stores/TurnReducer";
+import { useDispatch } from "react-redux";
 
-// useInterval 훅 정의
-function useInterval(callback, delay) {
-  const savedCallback = useRef();
+// function useInterval(callback, delay) {
+//   const savedCallback = useRef();
 
-  useEffect(() => {
-    savedCallback.current = callback;
-  }, [callback]);
+//   useEffect(() => {
+//     savedCallback.current = callback;
+//   }, [callback]);
 
-  useEffect(() => {
-    function tick() {
-      savedCallback.current();
-    }
+//   useEffect(() => {
+//     function tick() {
+//       savedCallback.current();
+//     }
 
-    if (delay !== null) {
-      const id = setInterval(tick, delay);
-      return () => clearInterval(id);
-    }
-  }, [delay]);
+//     if (delay !== null) {
+//       const id = setInterval(tick, delay);
+//       return () => clearInterval(id);
+//     }
+//   }, [delay]);
+// }
+
+let blackTime = 60 * 3;
+let whiteTime = 60 * 3;
+
+function whiteDecrease() {
+  // console.log("화이트 줄이기");
+  whiteTime -= 1;
+}
+
+function blackDecrease() {
+  // console.log("블랙 줄이기");
+  blackTime -= 1;
 }
 
 // 카운트 다운 컴포넌트
 function Countdown(props) {
-  const [time, setTime] = useState({ minutes: 3, seconds: 0 });
-  const currentPlayer = 0;
-  const [blackTime, setBlackTime] = useState({ ...time });
-  const [whiteTime, setWhiteTime] = useState({ ...time });
+  // const [time, setTime] = useState({ minutes: 3, seconds: 0 });
+  // const [blackTime, setBlackTime] = useState({ minutes: 3, seconds: 0 });
+  const savedCallback = useRef();
 
-  const handleClicked = () => {
-    currentPlayer = props.turn;
-    if (currentPlayer === 0) {
-      setWhiteTime((prevTime) => ({ ...prevTime }));
-    } else {
-      setBlackTime((prevTime) => ({ ...prevTime }));
-    }
-  };
+  const dispatch = useDispatch();
+  let isBlackTurn = useSelector(state.turn.isBlackTurn);
+  console.log(isBlackTurn);
+  useEffect(() => {
+    let black = blackDecrease;
+    let white = whiteDecrease;
 
-  useInterval(() => {
-    if (currentPlayer === 0) {
-      setBlackTime((prevTime) => decrementTime(prevTime));
+    let id = null;
+    if (isBlackTurn) {
+      // let id = setInterval(black, 1000);
+      console.log(isBlackTurn);
+      dispatch(Change_Turn());
+      // clearInterval(id);
     } else {
-      setWhiteTime((prevTime) => decrementTime(prevTime));
+      // let id = setInterval(white, 1000);
+      console.log(isBlackTurn);
+      dispatch(Change_Turn());
+      // clearInterval(id);
     }
+    return () => clearInterval(id);
   }, 1000);
 
-  const decrementTime = (prevTime) => {
-    const newTime = { ...prevTime };
+  // const handleClicked = () => {
+  //   setCurrentPlayer((prevPlayer) => (prevPlayer === 0 ? 1 : 0));
+  //   handleTurnChange((prevTurn) => (prevTurn === 0 ? 1 : 0));
+  // };
+
+  // const handleClicked = () => {
+  //   setCurrentPlayer((prevPlayer) => (prevPlayer === 0 ? 1 : 0));
+  //   if (currentPlayer === 0) {
+  //     setWhiteTime((prevTime) => ({ ...prevTime }));
+  //   } else {
+  //     setBlackTime((prevTime) => ({ ...prevTime }));
+  //   }
+  // };
+  const getMin = (t) => {
+    return t / 60;
   };
-  if (time.minutes === 0 && time.seconds === 0) {
-    // 타이머 종료 로직
-    // 예를 들어, 다른 동작 수행이 가능합니다.
-  } else {
-    setTime((prevTime) => {
-      const newTime = { ...prevTime };
+  const getSec = (t) => {
+    return t % 60;
+  };
+  const timeGoes = (t) => {
+    return t - 1;
+  };
 
-      if (newTime.seconds === 0) {
-        newTime.minutes -= 1;
-        newTime.seconds = 59;
-      } else {
-        newTime.seconds -= 1;
-      }
-
-      return newTime;
-    });
-
-    const formattedTime = `${String(time.minutes).padStart(2, "0")}:${String(
-      time.seconds
-    ).padStart(2, "0")}`;
-
-    return (
-      <div>
-        <p>Black Time left: {blackTime}</p>
-        <p>White Time left: {whiteTime}</p>
-      </div>
-    );
-  }
+  return (
+    <div>
+      <p>Black Time left: {blackTime}</p>
+      <p>White Time left: {whiteTime}</p>
+    </div>
+  );
 }
 
 export default Countdown;
