@@ -1,7 +1,8 @@
 import React from "react";
-import { useEffect, useSelector } from "react";
+import { useEffect } from "react";
 import { useRef } from "react";
 import { useState } from "react";
+import {useSelector} from "react-redux";
 import TurnReducer from "../stores/TurnReducer";
 import { Change_Turn } from "../stores/TurnReducer";
 import { useDispatch } from "react-redux";
