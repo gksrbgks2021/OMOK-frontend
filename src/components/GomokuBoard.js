@@ -53,9 +53,26 @@ const GomokuBoard = () => {
     }
     board.push(<div key={i}>{row}</div>);
   }
+  const playerStatus = (idx) => {
+    if(gameType === "offline"){
+      return userList[idx];
+    }else{
+      if(idx === 0){
+        return userList.length < 1 ? "유저1 미입장" :
+            userList[0];
+      }else if(idx === 1){
+        return userList.length < 2 ? "유저2 미입장" :
+              userList[1];
+      }
+    }
+  }
 
   useEffect(()=>{
         console.log(gameType);
+        if(gameType === "offline"){
+          let arr = ["유저 1", "유저 2"];
+          SetUserList(arr);
+        }
   }
   ,[]);
   return (
@@ -66,8 +83,7 @@ const GomokuBoard = () => {
             <br/>
             Player1
             <br/>
-            {userList.length < 1 ? "유저1 미입장" :
-                userList[0]}
+            {playerStatus(0)}
           </div>
           <div id="counter">
             <Countdown/>
@@ -77,8 +93,7 @@ const GomokuBoard = () => {
             <br/>
             Player2
             <br/>
-            {userList.length < 2 ? "유저2 미입장" :
-            userList[1]}
+            {playerStatus(1)}
           </div>
         </div>
         <h3>Current Player:</h3>
