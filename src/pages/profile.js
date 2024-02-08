@@ -18,7 +18,6 @@ const LogoutContainer = styled.div`
 
 function Profile(props) {
   const navigate = useNavigate();
-
   const handleLogout = () => {
     // Add any logout logic here
     // For now, let's navigate to the main page

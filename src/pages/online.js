@@ -91,8 +91,10 @@ function Online() {
   const handleCreateRoom = () => {
     console.log("버튼 클릭됨");
     const formData = new URLSearchParams();
-    let name = "1 님의 방";
-    formData.append("name", name);
+
+    let name = "roomA";
+    let user = prompt("유저 이름을 입력해 주세요");
+    let fee = counter.valueOf();
 
     axios({
       method: "post",
@@ -102,6 +104,8 @@ function Online() {
       },
       data: {
         name: name,
+        user: user,
+        fee: fee,
       },
     })
       .then((response) => {

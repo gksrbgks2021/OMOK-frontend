@@ -37,8 +37,8 @@ const ChessClock = () => {
 
   return (
     <div>
-      <hr></hr>
-      <hr></hr>
+      <br/>
+      <hr/>
       <div>White: {formatTime(whiteTime)}</div>
       <div>Black: {formatTime(blackTime)}</div>
       <button onClick={handleTurnChange}>Change Turn</button>

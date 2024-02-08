@@ -102,3 +102,9 @@
   justify-content: center;
   align-items: center;
 }
+
+#contaier{
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}

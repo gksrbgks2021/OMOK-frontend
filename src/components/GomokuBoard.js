@@ -7,6 +7,7 @@ const GomokuBoard = () => {
   const dispatch = useDispatch();
   const isBlackTurn = useSelector((state) => state.turn.isBlack);
   const [turn, setTurn] = useState(true); //turn 0 == black, 1 == white
+  const [userList, SetUserList] = useState(["유저 1 미입장", "유저 2 미입장."]);
   const [cellState, setCellState] = useState(
     Array.from({ length: 15 }, () => Array(15).fill(null))
   );
@@ -52,17 +53,33 @@ const GomokuBoard = () => {
   }
 
   return (
-    <div>
-      <div id="counter">
-        <Countdown />
+      <div>
+        <div id = "contaier">
+          <div>
+            <br/>
+            <br/>
+            Player1
+            <br/>
+            {userList[0]}
+          </div>
+          <div id="counter">
+            <Countdown/>
+          </div>
+          <div>
+            <br/>
+            <br/>
+            Player2
+            <br/>
+            {userList[1]}
+          </div>
+        </div>
+        <h3>Current Player:</h3>
+        <div id="contain_board">
+          <div className="board">{board}</div>
+          {/* Adding a 320x320px rectangle */}
+          <div id="back_board"></div>
+        </div>
       </div>
-      <h3>Current Player:</h3>
-      <div id="contain_board">
-        <div className="board">{board}</div>
-        {/* Adding a 320x320px rectangle */}
-        <div id="back_board"></div>
-      </div>
-    </div>
   );
 };
 
