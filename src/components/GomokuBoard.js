@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
+import {useParams} from "react-router-dom";
 import { useDispatch, connect, useSelector } from "react-redux";
 import "../styles/GomokuBoard.css";
 import Countdown from "../pages/offline";
 
 const GomokuBoard = () => {
+  const {gameType} = useParams();
   const dispatch = useDispatch();
   const isBlackTurn = useSelector((state) => state.turn.isBlack);
   const [turn, setTurn] = useState(true); //turn 0 == black, 1 == white
-  const [userList, SetUserList] = useState(["유저 1 미입장", "유저 2 미입장."]);
+  const [userList, SetUserList] = useState([]);
   const [cellState, setCellState] = useState(
     Array.from({ length: 15 }, () => Array(15).fill(null))
   );
@@ -52,6 +54,10 @@ const GomokuBoard = () => {
     board.push(<div key={i}>{row}</div>);
   }
 
+  useEffect(()=>{
+        console.log(gameType);
+  }
+  ,[]);
   return (
       <div>
         <div id = "contaier">
@@ -60,7 +66,8 @@ const GomokuBoard = () => {
             <br/>
             Player1
             <br/>
-            {userList[0]}
+            {userList.length < 1 ? "유저1 미입장" :
+                userList[0]}
           </div>
           <div id="counter">
             <Countdown/>
@@ -70,7 +77,8 @@ const GomokuBoard = () => {
             <br/>
             Player2
             <br/>
-            {userList[1]}
+            {userList.length < 2 ? "유저2 미입장" :
+            userList[1]}
           </div>
         </div>
         <h3>Current Player:</h3>
