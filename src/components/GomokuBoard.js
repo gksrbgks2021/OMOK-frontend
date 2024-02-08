@@ -42,7 +42,6 @@ const GomokuBoard = () => {
           ? "white"
           : ""
       }`;
-
       row.push(
         <div
           className={cellClassName}
@@ -53,6 +52,7 @@ const GomokuBoard = () => {
     }
     board.push(<div key={i}>{row}</div>);
   }
+
   const playerStatus = (idx) => {
     if(gameType === "offline"){
       return userList[idx];
