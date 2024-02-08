@@ -7,20 +7,20 @@ const initialState = { isMainShown: false };
 
 // Reducer
 const mainReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case SHOW_MAIN:
-            return {
-                ...state,
-                isMainShown: true,
-            };
-        case HIDE_MAIN:
-            return {
-                ...state,
-                isMainShown: false,
-            };
-        default:
-            return state;
-    }
+  switch (action.type) {
+    case SHOW_MAIN:
+      return {
+        ...state,
+        isMainShown: true,
+      };
+    case HIDE_MAIN:
+      return {
+        ...state,
+        isMainShown: false,
+      };
+    default:
+      return state;
+  }
 };
 
 // Action types

@@ -1,12 +1,22 @@
 import { useEffect, useRef, useState } from "react";
 import "../styles/onlinePageStyle.css";
 import * as StompJs from "@stomp/stompjs";
+import axios from "axios";
+import {
+  URL_GET_GETALLROOM,
+  URL_POST_CREATEROOM,
+} from "../constants/UrlConstants";
 import { Route, Router, Routes, useNavigate, Link } from "react-router-dom";
 
 function Online() {
   const [counter, setCounter] = useState(100);
   const [content, setContent] = useState("");
+  const [chatRoomData, setChatRoomData] = useState([]);
   const client = useRef({});
+
+  const messageField = useRef(null);
+  const myChatRoom = null;
+  const navigate = useNavigate();
 
   const connect = () => {
     client.current = new StompJs.Client({
@@ -21,9 +31,14 @@ function Online() {
       onConnect: () => {
         subscribe();
       },
+      onStompError: (frame) => {
+        console.log("Broker reported error: " + frame.headers["message"]);
+        console.log("Additional details: " + frame.body);
+      },
     });
 
-    client.current.activate(); // 메소드 자체가 없습니다.
+    /*활성화 시켜준다. */
+    client.current.activate();
   };
 
   const subscribe = () => {
@@ -33,14 +48,30 @@ function Online() {
     });
   };
 
-  useEffect(() => {
-    connect();
-    return () => disConnect();
-  }, []);
-
   const addContent = (message) => {
     setContent(content.concat(message));
   };
+
+  useEffect(() => {
+    connect();
+    axios({
+      method: "get",
+      url: URL_GET_GETALLROOM,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        console.log(`응답: `, response);
+        let data = response.data;
+        setChatRoomData(data);
+      })
+      .catch((error) => {
+        console.error("Error during get request:", error);
+      });
+
+    return () => disConnect();
+  }, []);
 
   const handler = (message) => {
     if (!client.current.connected) return;
@@ -59,12 +90,34 @@ function Online() {
 
   const handleCreateRoom = () => {
     console.log("버튼 클릭됨");
+    const formData = new URLSearchParams();
+    let name = "1 님의 방";
+    formData.append("name", name);
+
+    axios({
+      method: "post",
+      url: URL_POST_CREATEROOM,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: {
+        name: name,
+      },
+    })
+      .then((response) => {
+        console.log(`응답: `, response);
+        let data = response.data;
+      })
+      .catch((error) => {
+        console.error("Error during post request:", error);
+      });
+    navigate("/game/online");
   };
+
   const updateCounter = (value) => {
     setCounter((prevCounter) => prevCounter + value);
   };
 
-  const getModal = () => {};
   return (
     <div>
       <div id="betting">
@@ -80,7 +133,7 @@ function Online() {
       <div id="invitation">
         <div id="invitation-text">Game invitation</div>
         <h3 id="explaination">make a room</h3>
-        <button id="button" onClick={getModal}>
+        <button id="button" onClick={handleCreateRoom}>
           Generate Room Code
         </button>
         <h3 id="explaination">join an existing room</h3>

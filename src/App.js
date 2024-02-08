@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
-import GomokuBoard from "./components/GomokuBoard.tsx";
-import MainPage from "./pages/Main.js";
-import OnlineBoard from "./pages/onlineGame";
+import { Route, Router, Routes, useNavigate } from "react-router-dom";
+import GomokuBoard from "./components/GomokuBoard.js";
+import MainPage from "./pages/main.js";
 import Game from "./pages/game.js";
 import Online from "./pages/online.js";
 import Tab from "./pages/friend.js";
@@ -15,7 +14,6 @@ import { GOOGLE, KAKAO, GUEST } from "./constants/VARIABLE";
 import axios from "axios";
 import { URL_POST_TEST, URL_POST_SOCIALLOGIN } from "./constants/UrlConstants";
 import { useDispatch, useSelector } from "react-redux";
-import OnlineGame from "./pages/onlineGame";
 
 function App() {
   const dispatch = useDispatch();
@@ -41,7 +39,6 @@ function App() {
 
               <Route path="/game/offline" element={<GomokuBoard />} />
               <Route path="/game/online" element={<Online />} />
-                <Route path="/game/online" element={<OnlineGame/>}/>
               <Route path="/*" element={"Not Found"} />
             </Routes>
           </>
@@ -50,6 +47,7 @@ function App() {
     </div>
   );
 }
+
 /*
   //반응형 함수(?) 일단은 안씀
   function setScreenSize() {
