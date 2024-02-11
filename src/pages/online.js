@@ -5,8 +5,16 @@ import axios from "axios";
 import {
   URL_GET_GETALLROOM,
   URL_POST_CREATEROOM,
+  URL_POST_ENTERROOM,
 } from "../constants/UrlConstants";
 import { Route, Router, Routes, useNavigate, Link } from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {initMessage} from "../stores/ChatReduer";
+
+const MessageType = {
+  ENTER: 'ENTER',
+  TALK: 'TALK',
+};
 
 function Online() {
   const [counter, setCounter] = useState(100);
@@ -17,6 +25,9 @@ function Online() {
   const messageField = useRef(null);
   const myChatRoom = null;
   const navigate = useNavigate();
+
+  const chatState = useSelector(state => state.chat);
+  const dispatch = useDispatch();
 
   const connect = () => {
     client.current = new StompJs.Client({
@@ -36,18 +47,21 @@ function Online() {
         console.log("Additional details: " + frame.body);
       },
     });
-
     /*활성화 시켜준다. */
     client.current.activate();
   };
 
-  const subscribe = () => {
-    client.current.subscribe("/play/user", (msg) => {
-      const newMessage = JSON.parse(msg.body).message;
-      addContent(newMessage);
-    });
+  const subscribe = (roomId) => {
+    client.current.subscribe(`/queue/${roomId}`, msg_callback);
   };
-
+  /*broker 가 client 한테 메시지 전송할때마다, 트리거되는 콜백 함수.*/
+  const msg_callback = (message) => {
+    if (message.body) {
+      console.log('got message with body ' + message.body);
+    } else {
+      console.log('got empty message');
+    }
+  }
   const addContent = (message) => {
     setContent(content.concat(message));
   };
@@ -69,7 +83,6 @@ function Online() {
       .catch((error) => {
         console.error("Error during get request:", error);
       });
-
     return () => disConnect();
   }, []);
 
@@ -89,11 +102,16 @@ function Online() {
   };
 
   const handleCreateRoom = () => {
+
     console.log("버튼 클릭됨");
     const formData = new URLSearchParams();
 
-    let name = "roomA";
-    let user = prompt("유저 이름을 입력해 주세요");
+    let roomId = "roomA";
+    let senderId ="";
+    do{
+      senderId = prompt("유저 이름을 입력해 주세요");
+    }while(senderId === "");
+
     let fee = counter.valueOf();
 
     axios({
@@ -103,8 +121,8 @@ function Online() {
         "Content-Type": "application/json",
       },
       data: {
-        name: name,
-        user: user,
+        name: roomId,
+        user: senderId,
         fee: fee,
       },
     })
@@ -115,6 +133,22 @@ function Online() {
       .catch((error) => {
         console.error("Error during post request:", error);
       });
+
+    /*입장 메시지 redux에 초기화 후 저장.*/
+    dispatch(initMessage(roomId, senderId));
+    /*웹소켓으로 메시지 전송*/
+    if (client.current && client.current.connected) {
+      const destination = "/app/message"; // Adjust based on your server endpoint
+      client.current.send(destination, {}, JSON.stringify({
+        messageType: chatState.messageType,
+        chatRoomId: chatState.chatRoomId,
+        senderId: chatState.senderId,
+        messageText: `${senderId} entered the room.`,
+      }));
+    } else {
+      console.error("웹소켓 연결이 안됐습니다....");
+    }
+    /*게임 방 이동*/
     navigate("/game/online");
   };
 
