@@ -9,7 +9,7 @@ import {
 } from "../constants/UrlConstants";
 import { Route, Router, Routes, useNavigate, Link } from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {initMessage} from "../stores/ChatReduer";
+import {chatMsgStatus, initMessage} from "../stores/ChatReduer";
 
 const MessageType = {
   ENTER: 'ENTER',
@@ -26,7 +26,7 @@ function Online() {
   const myChatRoom = null;
   const navigate = useNavigate();
 
-  const chatState = useSelector(state => state.chat);
+  const chatState = useSelector(chatMsgStatus);
   const dispatch = useDispatch();
 
   const connect = () => {
@@ -52,14 +52,15 @@ function Online() {
   };
 
   const subscribe = (roomId) => {
-    client.current.subscribe(`/queue/${roomId}`, msg_callback);
+    const subscription = client.current.subscribe(`/queue/${roomId}`, msg_callback);
+    return subscription;
   };
   /*broker 가 client 한테 메시지 전송할때마다, 트리거되는 콜백 함수.*/
   const msg_callback = (message) => {
     if (message.body) {
-      console.log('got message with body ' + message.body);
+      console.log('받아온 메시지 : ' + message.body);
     } else {
-      console.log('got empty message');
+      console.log('메시지 is empty !!');
     }
   }
   const addContent = (message) => {
@@ -90,7 +91,7 @@ function Online() {
     if (!client.current.connected) return;
 
     client.current.publish({
-      destination: "/app/hello",
+      destination: "/app/game/msg",
       body: JSON.stringify({
         message: message,
       }),
@@ -133,28 +134,28 @@ function Online() {
       .catch((error) => {
         console.error("Error during post request:", error);
       });
-
     /*입장 메시지 redux에 초기화 후 저장.*/
     dispatch(initMessage(roomId, senderId));
+  };
+  const updateCounter = (value) => {
+    setCounter((prevCounter) => prevCounter + value);
+  };
+
+  useEffect(() => {
     /*웹소켓으로 메시지 전송*/
     if (client.current && client.current.connected) {
+      console.log(chatState);
       const destination = "/app/message"; // Adjust based on your server endpoint
       client.current.send(destination, {}, JSON.stringify({
-        messageType: chatState.messageType,
-        chatRoomId: chatState.chatRoomId,
-        senderId: chatState.senderId,
-        messageText: `${senderId} entered the room.`,
+        chatState,
       }));
     } else {
       console.error("웹소켓 연결이 안됐습니다....");
     }
     /*게임 방 이동*/
     navigate("/game/online");
-  };
+  }, [chatState]); // This ensures the log reflects the latest state after updates.
 
-  const updateCounter = (value) => {
-    setCounter((prevCounter) => prevCounter + value);
-  };
 
   return (
     <div>

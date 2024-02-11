@@ -1,8 +1,8 @@
 // Action types
-export const SET_MESSAGE = "SET_MESSAGE";
-export const CLEAR_MESSAGE = "CLEAR_MESSAGE";
-export const SEND_SESSGAE = "SEND_MESSAGE";
-export const INIT_MESSAGE = "INIT_MESSAGE";
+const SET_MESSAGE = "SET_MESSAGE";
+const CLEAR_MESSAGE = "CLEAR_MESSAGE";
+const SEND_SESSGAE = "SEND_MESSAGE";
+const INIT_MESSAGE = "INIT_MESSAGE";
 
 //변수 초기화
 const initialState = {
@@ -12,16 +12,18 @@ const initialState = {
     messageText: '', // renamed from 'message' to avoid naming conflicts
 };
 
-
+export const chatMsgStatus = (state) => state.message ;
 //Reducer 정의
 const chatReducer = (state = initialState, action) => {
+    console.log('Current state:', state);
+    console.log('Incoming action:', action);
     switch (action.type) {
         case INIT_MESSAGE:
             return{
                 ...state,
-                chatRoomId: action.payload.chatRoomId,
+                chatRoomId: action.payload.chatRoomId, // Corrected from action.chatRoomId
                 senderId: action.payload.senderId,
-                messageType: 'ENTER',
+                messageType: 'ENTER', // This can be hardcoded as 'ENTER' or also taken from action.payload if dynamic
                 messageText: '',
             }
         case SET_MESSAGE:
@@ -53,6 +55,10 @@ export const clearMessage = () => ({
 
 export const initMessage = (roomId, senderId) => ({
     type: INIT_MESSAGE,
-    payload: { chatRoomId: roomId, senderId: senderId },
+    payload: {
+        chatRoomId: roomId,
+        senderId: senderId ,
+    },
 });
+
 export default chatReducer;
