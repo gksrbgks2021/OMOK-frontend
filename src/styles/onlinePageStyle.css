@@ -77,6 +77,18 @@
   cursor: pointer;
 }
 
+#startbutton {
+  width: 300px;
+  height: 50px;
+  margin-left: 30px;
+  border-radius: 10px;
+  font-size: larger;
+  font-weight: bolder;
+  background-color: #fce444;
+  box-shadow: 2px 2px 2px 2px lightgray;
+  cursor: pointer;
+}
+
 #viewlistbutton {
   width: 300px;
   height: 50px;
@@ -88,4 +100,19 @@
   background-color: #fce444;
   box-shadow: 2px 2px 2px 2px lightgray;
   cursor: pointer;
+}
+
+#enter-code {
+  border: 0.5px solid gray;
+  width: 300px;
+  height: 40px;
+  color: gray;
+  margin-left: 30px;
+  border-radius: 5px;
+}
+
+#explaination {
+  display: flex;
+  justify-content: center;
+  color: grey;
 }

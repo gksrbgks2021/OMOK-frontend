@@ -1,24 +1,54 @@
-import {useDispatch, useSelector} from "react-redux";
-import GomokuBoard from "../components/GomokuBoard.tsx";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { useDispatch, connect, useSelector } from "react-redux";
 import "../styles/gameRoom.css";
-function OnlineGame() {
-    const dispatch = useDispatch();
+import Countdown from "../pages/offline";
 
-    return (
-        <div className="onlinegame">
-            <div className="screen">
-                <div id="dino">
-                    <div id="user">
-                        사용자 1
-                    </div>
-                        <GomokuBoard/>
-                    <div id="user2">
-                        사용자 2
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
+function OnlineGame() {
+  const { gameType } = useParams();
+  const dispatch = useDispatch();
+  const [userList, SetUserList] = useState([]);
+
+  const playerStatus = (idx) => {
+    if (gameType === "offline") {
+      return userList[idx];
+    } else {
+      if (idx === 0) {
+        return userList.length < 1 ? "유저1 미입장" : userList[0];
+      } else if (idx === 1) {
+        return userList.length < 2 ? "유저2 미입장" : userList[1];
+      }
+    }
+  };
+
+  useEffect(() => {
+    console.log(gameType);
+    if (gameType === "offline") {
+      let arr = ["유저 1", "유저 2"];
+      SetUserList(arr);
+    }
+  }, []);
+
+  return (
+    <div id="contaier">
+      <div>
+        <br />
+        <br />
+        Player1
+        <br />
+        {playerStatus(0)}
+      </div>
+      <div id="counter">
+        <Countdown />
+      </div>
+      <div>
+        <br />
+        <br />
+        Player2
+        <br />
+        {playerStatus(1)}
+      </div>
+    </div>
+  );
 }
 export default OnlineGame;
