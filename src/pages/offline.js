@@ -37,11 +37,14 @@ const ChessClock = () => {
 
   return (
     <div>
-      <br/>
-      <hr/>
-      <div>White: {formatTime(whiteTime)}</div>
-      <div>Black: {formatTime(blackTime)}</div>
-      <button onClick={handleTurnChange}>Change Turn</button>
+      <div id="timer">
+        <div className={isBlackTurn ? "redText" : "normalText"}>
+          Black: {formatTime(whiteTime)}
+        </div>
+        <div className={isBlackTurn ? "normalText" : "redText"}>
+          White: {formatTime(blackTime)}
+        </div>
+      </div>
     </div>
   );
 };
