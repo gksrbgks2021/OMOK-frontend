@@ -186,19 +186,11 @@ function Online() {
       </div>
       <div id="invitation">
         <div id="invitation-text">Game invitation</div>
-        <h3 id="explaination">make a room</h3>
         <button id="generatebutton" onClick={handleCreateRoom}>
-          Generate Room Code
+          make a room
         </button>
-        <h3 id="explaination">join an existing room</h3>
-        <input
-          id="enter-code"
-          type="text"
-          placeholder="Enter Friend Code..."></input>
-        <Link to="/game/online/play">
-          <button id="startbutton" onClick={handleStart}>
-            Start Game!
-          </button>
+        <Link to="/game/online/roomlist">
+          <button id="viewlistbutton">view room list</button>
         </Link>
         <div id="roomInfo">
           <div>

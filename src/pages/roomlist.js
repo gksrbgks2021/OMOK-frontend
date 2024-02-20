@@ -9,11 +9,13 @@ function Roomlist(props) {
       <StatusBar />
       <NavigationBar />
       <div id="available">Room Available</div>
-      <Room></Room>
-      <Room></Room>
-      <Room></Room>
-      <Room></Room>
-      <Room></Room>
+      <div id="roomlist">
+        <Room></Room>
+        <Room></Room>
+        <Room></Room>
+        <Room></Room>
+        <Room></Room>
+      </div>
     </div>
   );
 }
