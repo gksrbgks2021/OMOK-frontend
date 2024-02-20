@@ -1,6 +1,6 @@
 #betting {
   margin-top: 30px;
-  height: 270px;
+  height: 240px;
 }
 
 #betting-text {
@@ -9,6 +9,7 @@
   font-size: larger;
   font-weight: bolder;
   margin-bottom: 30px;
+  padding-left: 10px;
   /* text-align: center; */
   line-height: 50px;
   background-color: #f4f4f4;
@@ -17,13 +18,13 @@
 
 #coin {
   width: 300px;
-  height: 100px;
-  margin-bottom: 30px;
+  height: 70px;
   border-radius: 30px;
   margin: auto;
   margin-bottom: 20px;
   text-align: center;
-  line-height: 100px;
+  align-items: center;
+  line-height: 70px;
   font-size: 30px;
   font-weight: bolder;
   background-color: #ffefd0;
@@ -52,12 +53,10 @@
   box-shadow: 2px 2px 2px 2px lightgray;
 }
 
-#invitation {
-}
-
 #invitation-text {
   width: 360px;
   height: 50px;
+  padding-left: 10px;
   font-size: larger;
   font-weight: bolder;
   line-height: 50px;
@@ -102,6 +101,9 @@
 }
 
 #enter-code {
+  margin-top: 10px;
+  margin-bottom: 0px;
+  padding-left: 10px;
   border: 0.5px solid gray;
   width: 300px;
   height: 40px;
@@ -111,6 +113,8 @@
 }
 
 #explaination {
+  margin-top: 10px;
+  margin-bottom: 0px;
   display: flex;
   justify-content: center;
   color: grey;

@@ -31,10 +31,6 @@ const ChessClock = () => {
     return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
   };
 
-  const handleTurnChange = () => {
-    dispatch({ type: "changeTurn" });
-  };
-
   return (
     <div>
       <div id="timer">

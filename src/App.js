@@ -7,6 +7,8 @@ import Online from "./pages/online.js";
 import Tab from "./pages/friend.js";
 import Rank from "./pages/rank.js";
 import Profile from "./pages/profile.js";
+import Roomlist from "./pages/roomlist.js";
+import Play from "./pages/play.js";
 import NavigationBar from "./NavigationBar.js";
 import StatusBar from "./StatusBar.js";
 import "./App.css";
@@ -37,9 +39,10 @@ function App() {
               <Route path="/rank" element={<Rank />} />
               <Route path="/profile" element={<Profile />} />
 
-              <Route path="/game/:gameType" element={<GomokuBoard />} />
-              <Route path="/mainroom" element={<Online />} />
-
+              <Route path="/game/offline" element={<GomokuBoard />} />
+              <Route path="/game/online" element={<Online />} />
+              <Route path="/game/online/play" element={<Play />} />
+              <Route path="/game/online/roomlist" element={<Roomlist />} />
               <Route path="/*" element={"Not Found"} />
             </Routes>
           </>

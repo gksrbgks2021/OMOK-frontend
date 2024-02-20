@@ -4,6 +4,8 @@ import moneyImage from "./styles/icon/statusBar/smile.png";
 
 //status bar 전체
 const StatBar = styled.div`
+  width: 360px;
+  box-sizing: border-box;
   position: fixed;
   top: 0;
   left: 0;
@@ -12,6 +14,8 @@ const StatBar = styled.div`
   width: 360px;
   margin-left: auto;
   margin-right: auto;
+  padding-left: 10px;
+  padding-right: 10px;
   background-color: #ffffff;
 `;
 
