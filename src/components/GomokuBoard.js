@@ -29,7 +29,6 @@ const GomokuBoard = () => {
       setTurn(turn === true ? false : true);
     }
   };
-
   const boardSize = 15;
   const board = [];
   for (let i = 0; i < boardSize; i++) {
@@ -52,7 +51,6 @@ const GomokuBoard = () => {
     }
     board.push(<div key={i}>{row}</div>);
   }
-
   const playerStatus = (idx) => {
     if(gameType === "offline"){
       return userList[idx];
@@ -66,7 +64,6 @@ const GomokuBoard = () => {
       }
     }
   }
-
   useEffect(()=>{
         console.log(gameType);
         if(gameType === "offline"){
