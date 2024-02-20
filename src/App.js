@@ -38,7 +38,7 @@ function App() {
               <Route path="/profile" element={<Profile />} />
 
               <Route path="/game/:gameType" element={<GomokuBoard />} />
-              <Route path="/game/mainroom" element={<Online />} />
+              <Route path="/mainroom" element={<Online />} />
 
               <Route path="/*" element={"Not Found"} />
             </Routes>

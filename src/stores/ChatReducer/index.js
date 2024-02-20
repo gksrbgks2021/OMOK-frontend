@@ -6,19 +6,22 @@ const INIT_MESSAGE = "INIT_MESSAGE";
 
 //변수 초기화
 const initialState = {
-    messageType: 'ENTER', // Default to ENTER
-    chatRoomId: '',
-    senderId: '',
+    messageType: '', // Default to ENTER
+    chatRoomId: null,
+    senderId: null,
     messageText: '', // renamed from 'message' to avoid naming conflicts
 };
 
 export const chatMsgStatus = (state) => state.message ;
+export const chatRoomIdStatus = (state) => state.message.chatRoomId ;
+export const senderIdStatus = (state) => state.message.senderId ;
 //Reducer 정의
 const chatReducer = (state = initialState, action) => {
     console.log('Current state:', state);
     console.log('Incoming action:', action);
     switch (action.type) {
         case INIT_MESSAGE:
+
             return{
                 ...state,
                 chatRoomId: action.payload.chatRoomId, // Corrected from action.chatRoomId
@@ -58,7 +61,7 @@ export const initMessage = (roomId, senderId) => ({
     payload: {
         chatRoomId: roomId,
         senderId: senderId ,
-    },
+    }
 });
 
 export default chatReducer;

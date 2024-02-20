@@ -9,7 +9,7 @@ import {
 } from "../constants/UrlConstants";
 import { Route, Router, Routes, useNavigate, Link } from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {chatMsgStatus, initMessage} from "../stores/ChatReduer";
+import {chatMsgStatus, chatRoomIdStatus, initMessage, senderIdStatus} from "../stores/ChatReducer";
 
 const MessageType = {
   ENTER: 'ENTER',
@@ -27,9 +27,12 @@ function Online() {
   const navigate = useNavigate();
 
   const chatState = useSelector(chatMsgStatus);
+  const redux_chatRoomId= useSelector(chatRoomIdStatus);
+  const redux_senderId = useSelector(senderIdStatus);
+
   const dispatch = useDispatch();
 
-  const connect = () => {
+  const connect = (roomId) => {
     client.current = new StompJs.Client({
       brokerURL: "ws://localhost:8002/ws/websocket",
       connectHeaders: {
@@ -40,21 +43,25 @@ function Online() {
         console.log(str);
       },
       onConnect: () => {
-        subscribe();
+        console.log("onConnect 실행됨...");
+        subscribe(roomId);
+        client.current.publish({destination: '/chatroom/roomA', body: 'Hello world'});
       },
       onStompError: (frame) => {
         console.log("Broker reported error: " + frame.headers["message"]);
         console.log("Additional details: " + frame.body);
       },
     });
+
     /*활성화 시켜준다. */
     client.current.activate();
   };
 
   const subscribe = (roomId) => {
-    const subscription = client.current.subscribe(`/queue/${roomId}`, msg_callback);
+    const subscription = client.current.subscribe(`/chatroom/${roomId}`, msg_callback);
     return subscription;
   };
+
   /*broker 가 client 한테 메시지 전송할때마다, 트리거되는 콜백 함수.*/
   const msg_callback = (message) => {
     if (message.body) {
@@ -68,7 +75,6 @@ function Online() {
   };
 
   useEffect(() => {
-    connect();
     axios({
       method: "get",
       url: URL_GET_GETALLROOM,
@@ -84,7 +90,6 @@ function Online() {
       .catch((error) => {
         console.error("Error during get request:", error);
       });
-    return () => disConnect();
   }, []);
 
   const handler = (message) => {
@@ -115,6 +120,9 @@ function Online() {
 
     let fee = counter.valueOf();
 
+    //웹 소켓 연결
+    connect(roomId);
+
     axios({
       method: "post",
       url: URL_POST_CREATEROOM,
@@ -130,21 +138,29 @@ function Online() {
       .then((response) => {
         console.log(`응답: `, response);
         let data = response.data;
+        /*입장 메시지 redux에 초기화 후 저장.*/
+        dispatch(initMessage(roomId, senderId));
+
+        navigate("/game/online");
+
       })
       .catch((error) => {
         console.error("Error during post request:", error);
       });
-    /*입장 메시지 redux에 초기화 후 저장.*/
-    dispatch(initMessage(roomId, senderId));
   };
   const updateCounter = (value) => {
     setCounter((prevCounter) => prevCounter + value);
   };
+  useEffect(() => {
+    console.log("devdev",client.current.connected);
+  }, [client.current.connected]);
 
   useEffect(() => {
+    console.log(`현재 chatState:`,client.current.connected);
     /*웹소켓으로 메시지 전송*/
     if (client.current && client.current.connected) {
       console.log(chatState);
+      console.log("연결됐지롱");
       const destination = "/app/message"; // Adjust based on your server endpoint
       client.current.send(destination, {}, JSON.stringify({
         chatState,
@@ -152,10 +168,7 @@ function Online() {
     } else {
       console.error("웹소켓 연결이 안됐습니다....");
     }
-    /*게임 방 이동*/
-    navigate("/game/online");
-  }, [chatState]); // This ensures the log reflects the latest state after updates.
-
+  }, [redux_chatRoomId, redux_senderId]); // This ensures the log reflects the latest state after updates.
 
   return (
     <div>
