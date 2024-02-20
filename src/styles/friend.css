@@ -23,6 +23,7 @@
 #userBox {
   border-style: solid;
   height: 400px;
+  width: 280px;
   border-radius: 5px;
   background-color: rgba(236, 235, 235, 0.878);
 }
@@ -45,4 +46,9 @@
   border-radius: 5px;
   cursor: pointer;
   margin: 0px;
+}
+
+#requestBox {
+  display: flex;
+  justify-content: center;
 }

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, connect, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import "../styles/GomokuBoard.css";
 import Countdown from "../pages/offline";
 import blackIcon from "../styles/icon/board/black.png";
@@ -70,6 +71,11 @@ const GomokuBoard = () => {
         <div className="board">{board}</div>
         {/* Adding a 320x320px rectangle */}
         <div id="back_board"></div>
+      </div>
+      <div className="endButton">
+        <Link to="/game" id="end">
+          게임 종료
+        </Link>
       </div>
     </div>
   );
