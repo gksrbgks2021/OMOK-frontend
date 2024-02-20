@@ -31,7 +31,6 @@ export default function CreateReadChat() {
                 chat: chat,
             }),
         });
-
         setChat('');
     };
 

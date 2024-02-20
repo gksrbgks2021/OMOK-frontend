@@ -1,0 +1,16 @@
+#dino{
+    margin-top:30px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    border: 3px solid red;
+}
+#user {
+    justify-content: center;
+    border: 2px solid blue;
+    padding-top: 10%;
+}
+#user2{
+    margin-top:20%;
+    border: 2px solid blue;
+}
