@@ -24,19 +24,27 @@ const GomokuBoard = () => {
   const handleClick = (i, j) => {
     // console.log(`Cell clicked: (${i}, ${j})`);
     // console.log("state: ", isBlackTurn);
-    if (cellState[i][j] === null) {
-      const newCellState = [...cellState];
-      newCellState[i][j] = turn;
-      if (isBlackTurn === true) {
-        dispatch({ type: "blackTurn" });
-      } else {
-        dispatch({ type: "whiteTurn" });
+    if (gameType === "offline") {
+      if (cellState[i][j] === null) {
+        const newCellState = [...cellState];
+        newCellState[i][j] = turn;
+        if (isBlackTurn === true) {
+          dispatch({ type: "blackTurn" });
+        } else {
+          dispatch({ type: "whiteTurn" });
+        }
+        setCellState(newCellState);
+        setTurn(turn === true ? false : true);
       }
-      setCellState(newCellState);
-      setTurn(turn === true ? false : true);
+    } else {
+      if (cellState[i][j] === null) {
+        const newCellState = [...cellState];
+        newCellState[i][j] = turn;
+        setCellState(newCellState);
+        // setTurn(turn === true ? false : true);
+      }
+      dispatch(setMessageText(`${i}, ${j}`));
     }
-    // setMessageText(`${i}, ${j}`);
-    dispatch(setMessageText(`${i}, ${j}`));
   };
 
   const boardSize = 15;
