@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, connect, useSelector } from "react-redux";
 import "../styles/gameRoom.css";
 import Countdown from "../pages/offline";
+import OnlineBoard from "../components/onlineBoard.js";
 
 function OnlineGame() {
   const { gameType } = useParams();
@@ -38,8 +39,8 @@ function OnlineGame() {
         <br />
         {playerStatus(0)}
       </div>
-      <div id="counter">
-        <Countdown />
+      <div id="board">
+        <OnlineBoard></OnlineBoard>
       </div>
       <div>
         <br />

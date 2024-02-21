@@ -5,8 +5,9 @@ import "../styles/GomokuBoard.css";
 import Countdown from "../pages/offline";
 import blackIcon from "../styles/icon/board/black.png";
 import whiteIcon from "../styles/icon/board/white.png";
+import offline from "../pages/offline";
 
-const GomokuBoard = () => {
+const OfflineBoard = () => {
   const dispatch = useDispatch();
   const isBlackTurn = useSelector((state) => state.turn.isBlack);
   const [turn, setTurn] = useState(true); //turn 0 == black, 1 == white
@@ -85,4 +86,4 @@ const mapStateToProps = (state) => ({
   isBlackTurn: state.isBlackTurn,
 });
 
-export default connect(mapStateToProps)(GomokuBoard);
+export default connect(mapStateToProps)(OfflineBoard);

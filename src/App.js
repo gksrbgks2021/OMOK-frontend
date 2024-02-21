@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Route, Router, Routes, useNavigate } from "react-router-dom";
-import GomokuBoard from "./components/GomokuBoard.js";
+import OfflineBoard from "./components/offlineBoard.js";
 import MainPage from "./pages/main.js";
 import Game from "./pages/game.js";
 import Online from "./pages/online.js";
@@ -39,7 +39,7 @@ function App() {
               <Route path="/rank" element={<Rank />} />
               <Route path="/profile" element={<Profile />} />
 
-              <Route path="/game/offline" element={<GomokuBoard />} />
+              <Route path="/game/offline" element={<OfflineBoard />} />
               <Route path="/game/online" element={<Online />} />
               <Route path="/game/online/onlineGame" element={<OnlineGame />} />
               <Route path="/game/online/roomlist" element={<Roomlist />} />

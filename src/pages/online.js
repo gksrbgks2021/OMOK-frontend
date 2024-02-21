@@ -176,7 +176,7 @@ function Online() {
     /*전송 요청을 합니다.*/
     axios({
       method: "post",
-      url: URL_GET_FRIENDROOM + roomInfo.roomId,
+      url: URL_GET_FRIENDROOM + inputValue,
       // url: URL_GET_GETALLROOM,
       headers: {
         "Content-Type": "application/json",
@@ -186,11 +186,12 @@ function Online() {
         console.log(`응답: `, response);
         let data = response.data;
         setChatRoomData(data);
+        navigate("/game/online/onlineGame");
       })
       .catch((error) => {
         console.error("Error during get request:", error);
       });
-    console.log("url = ", URL_GET_FRIENDROOM + roomInfo.roomId);
+    console.log("url = ", URL_GET_FRIENDROOM + inputValue);
   };
 
   const searchRooms = () => {
@@ -228,7 +229,8 @@ function Online() {
       console.log(chatState);
       console.log("연결됐지롱");
       const destination = "/app/message"; // Adjust based on your server endpoint
-      client.current.send(
+      client.current.activate(
+        // activate
         destination,
         {},
         JSON.stringify({
@@ -266,11 +268,9 @@ function Online() {
           type="text"
           placeholder="Enter Friend Code..."
         ></input>
-        <Link to="/game/online/play">
-          <button id="startbutton" onClick={handleStart}>
-            Start Game!
-          </button>
-        </Link>
+        <button id="startbutton" onClick={handleStart}>
+          Start Game!
+        </button>
         <Link to="/game/online/roomlist">
           <button id="viewlistbutton">Join room list</button>
         </Link>
