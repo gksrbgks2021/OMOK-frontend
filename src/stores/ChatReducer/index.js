@@ -1,7 +1,7 @@
 // Action types
 const SET_MESSAGE = "SET_MESSAGE";
 const CLEAR_MESSAGE = "CLEAR_MESSAGE";
-const SEND_SESSGAE = "SEND_MESSAGE";
+const SEND_MESSAGE = "SEND_MESSAGE";
 const INIT_MESSAGE = "INIT_MESSAGE";
 
 //변수 초기화
@@ -26,18 +26,18 @@ const chatReducer = (state = initialState, action) => {
         chatRoomId: action.payload.chatRoomId, // Corrected from action.chatRoomId
         senderId: action.payload.senderId,
         messageType: "ENTER", // This can be hardcoded as 'ENTER' or also taken from action.payload if dynamic
-        messageText: "",
+        messageText: action.payload.messageText,
       };
     case SET_MESSAGE:
       return {
         ...state,
-        ...action.payload, // Spread the payload to update the state
+        messageText: action.payload.messageText,
       };
     case CLEAR_MESSAGE:
       return {
         ...initialState, // Reset to initial state
       };
-    case SEND_SESSGAE:
+    case SEND_MESSAGE:
       return {};
     default:
       return state;
@@ -47,6 +47,13 @@ const chatReducer = (state = initialState, action) => {
 export const setMessage = (message) => ({
   type: SET_MESSAGE,
   payload: message, // Expecting message to be an object with messageType, chatRoomId, senderId, messageText
+});
+
+export const setMessageText = (text) => ({
+  type: SET_MESSAGE,
+  payload: {
+    messageText: text,
+  },
 });
 
 export const clearMessage = () => ({

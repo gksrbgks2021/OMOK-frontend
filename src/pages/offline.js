@@ -17,7 +17,7 @@ const ChessClock = () => {
       } else {
         setBlackTime((prevTime) => (prevTime > 0 ? prevTime - 1 : prevTime));
       }
-      console.log("state: ", isBlackTurn);
+      // console.log("state: ", isBlackTurn);
     }, 1000);
 
     setTimerInterval(timer);

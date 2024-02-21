@@ -15,6 +15,7 @@ import {
   chatRoomIdStatus,
   initMessage,
   senderIdStatus,
+  setMessageText,
 } from "../stores/ChatReducer";
 
 const MessageType = {
