@@ -32,10 +32,7 @@ function Main() {
     const handleGoogleLogin = () => {
         const url = URL_POST_TEST;
         const googleurl = URL_POST_SOCIALLOGIN + "/" + GOOGLE;
-
         window.location.href = googleurl;
-
-
     };
     const handleGuestLogin = () => {
         console.log("게스트 로그인 처리합니다");
