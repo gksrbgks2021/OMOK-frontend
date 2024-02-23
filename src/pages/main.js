@@ -11,7 +11,6 @@ function Main() {
     const [isShowMain, setShowMain] = useState(true);
     const navigate = useNavigate();
 
-    const url = new URL(window.location.href);
     const dispatch = useDispatch();
 
     const onButtonClick = (category) => {
@@ -32,7 +31,25 @@ function Main() {
     const handleGoogleLogin = () => {
         const url = URL_POST_TEST;
         const googleurl = URL_POST_SOCIALLOGIN + "/" + GOOGLE;
-        window.location.href = googleurl;
+
+        console.log(URL_POST_TEST);
+        axios({
+            method: "post",
+            url: url,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => {
+                console.log(`응답: `, response);
+                let data = response.data;
+                if(response.data){
+                    console.log('data',data);
+                }
+            })
+            .catch(error => {
+                console.error("Error during POST request:", error);
+            });
     };
     const handleGuestLogin = () => {
         console.log("게스트 로그인 처리합니다");
@@ -43,16 +60,13 @@ function Main() {
     }, []);
 
   return (
-      <div>
-          <div id="mainLogo"/>
-          <div id="omok">O-MOK</div>
-
-
-          <button className="loginBtn" id={GOOGLE} onClick={() => onButtonClick(GOOGLE)}/>
-          <button className="loginBtn" id={KAKAO} onClick={() => onButtonClick(KAKAO)}/>
-          <button className="loginBtn" id={GUEST} onClick={() => onButtonClick(GUEST)}/>
-
-      </div>
+    <div>
+      <div id="mainLogo" />
+      <div id="omok">O-MOK</div>
+      <button className="loginBtn" id={GOOGLE} onClick={() => onButtonClick(GOOGLE)} />
+      <button className="loginBtn" id={KAKAO} onClick={() => onButtonClick(KAKAO)} />
+      <button className="loginBtn" id={GUEST} onClick={() => onButtonClick(GUEST)} />
+    </div>
   );
 }
 
