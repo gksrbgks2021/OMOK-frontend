@@ -1,6 +1,6 @@
 import "../styles/mainPageStyle.css";
 import {GOOGLE, KAKAO, GUEST } from "../constants/VARIABLE";
-import React, {useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {URL_POST_SOCIALLOGIN, URL_POST_TEST} from "../constants/UrlConstants";
 import axios from "axios";
@@ -34,6 +34,7 @@ function Main() {
         const googleurl = URL_POST_SOCIALLOGIN + "/" + GOOGLE;
 
         window.location.href = googleurl;
+
 
     };
     const handleGuestLogin = () => {
