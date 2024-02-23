@@ -61,7 +61,7 @@ function Roomlist(props) {
         console.log("onConnect 실행됨...");
         subscribe(roomId);
         client.current.publish({
-          destination: "/chatroom/roomA",
+          destination: `/chatroom/${roomId}`,
           body: "Hello world",
         });
       },
