@@ -1,0 +1,52 @@
+// Variables for Typography
+$body-font: 'Inter', sans-serif;
+$header-font: 'Pretendard', sans-serif;
+
+$font-weight-regular: 400;
+$font-weight-bold: 600;
+
+$font-size-body: 16px;
+$font-size-body-14: 14px;
+$font-size-body-12: 12px;
+$font-size-header-50: 50px;
+$font-size-header-40: 40px;
+$font-size-header-30: 30px;
+$font-size-header-16: 16px;
+$font-size-header-14: 14px;
+$font-size-headline-24: 24px;
+
+// Apply Typography to Elements sample
+body {
+  font-family: $body-font;
+  font-size: $font-size-body;
+  font-weight: $font-weight-regular;
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $header-font;
+  font-weight: $font-weight-bold;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: $font-size-header-50;
+}
+
+h2 {
+  font-size: $font-size-header-40;
+}
+
+h3 {
+  font-size: $font-size-header-30;
+}
+
+h4 {
+  font-size: $font-size-headline-24;
+}
+
+p {
+  font-size: $font-size-body;
+}
+
+// Additional styling can be added as needed.
