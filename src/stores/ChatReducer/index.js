@@ -31,6 +31,7 @@ const chatReducer = (state = initialState, action) => {
     case SET_MESSAGE:
       return {
         ...state,
+        messageType: action.payload.messageType,
         messageText: action.payload.messageText,
       };
     case CLEAR_MESSAGE:
@@ -52,6 +53,7 @@ export const setMessage = (message) => ({
 export const setMessageText = (text) => ({
   type: SET_MESSAGE,
   payload: {
+    messageType: "TALK",
     messageText: text,
   },
 });

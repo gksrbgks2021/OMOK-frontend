@@ -8,7 +8,6 @@ import Tab from "./pages/friend.js";
 import Rank from "./pages/rank.js";
 import Profile from "./pages/profile.js";
 import Roomlist from "./pages/roomlist.js";
-import OnlineGame from "./pages/onlineGame.js";
 import NavigationBar from "./NavigationBar.js";
 import StatusBar from "./StatusBar.js";
 import "./App.css";
@@ -41,7 +40,7 @@ function App() {
 
               <Route path="/game/offline" element={<GomokuBoard />} />
               <Route path="/game/online" element={<Online />} />
-              <Route path="/game/online/onlineGame" element={<OnlineGame />} />
+              <Route path="/game/online/onlineGame" element={<GomokuBoard />} />
               <Route path="/game/online/roomlist" element={<Roomlist />} />
               <Route path="/*" element={"Not Found"} />
             </Routes>
