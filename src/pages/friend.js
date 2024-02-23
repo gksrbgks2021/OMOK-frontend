@@ -175,12 +175,14 @@ class SearchBar extends Component {
 class ContentRequests extends Component {
   render() {
     return (
-      <div id="userBox">
-        <RequestUser />
-        <RequestUser />
-        <RequestUser />
-        <RequestUser />
-        <RequestUser />
+      <div id="requestBox">
+        <div id="userBox">
+          <RequestUser />
+          <RequestUser />
+          <RequestUser />
+          <RequestUser />
+          <RequestUser />
+        </div>
       </div>
     );
   }

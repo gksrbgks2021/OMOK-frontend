@@ -9,3 +9,5 @@ export const URL_POST_TEST = backdomain + "/api/sign/auth/temp";
 export const URL_GET_GETALLROOM = backdomain + "/chat/rooms";
 
 export const URL_POST_ENTERROOM = backdomain + "/chat/room/";
+
+export const URL_GET_FRIENDROOM = backdomain + "/chat/";

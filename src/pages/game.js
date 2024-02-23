@@ -11,7 +11,7 @@ function Game() {
       <h2>Game</h2>
       <ul>
         <li>
-          <Link to="/mainroom">
+          <Link to="/game/online">
             <div id="onlineBtn"></div>
           </Link>
         </li>

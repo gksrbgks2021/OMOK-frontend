@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from "react";
-import {Route, Router, Routes, useLocation, useNavigate} from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Route, Router, Routes, useNavigate } from "react-router-dom";
 import GomokuBoard from "./components/GomokuBoard.js";
 import MainPage from "./pages/main.js";
 import Game from "./pages/game.js";
@@ -7,6 +7,7 @@ import Online from "./pages/online.js";
 import Tab from "./pages/friend.js";
 import Rank from "./pages/rank.js";
 import Profile from "./pages/profile.js";
+import Roomlist from "./pages/roomlist.js";
 import NavigationBar from "./NavigationBar.js";
 import StatusBar from "./StatusBar.js";
 import "./App.css";
@@ -75,7 +76,7 @@ function App() {
                 )}
             </div>
         </div>
-    );
+  );
 }
 
 /*

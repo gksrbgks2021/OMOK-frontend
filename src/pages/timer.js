@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { connect } from "react-redux";
-import "../styles/offline.css";
+import "../styles/timer.css";
 
 const ChessClock = () => {
   const [whiteTime, setWhiteTime] = useState(600);
@@ -12,12 +12,12 @@ const ChessClock = () => {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      if (isBlackTurn) {
+      if (!isBlackTurn) {
         setWhiteTime((prevTime) => (prevTime > 0 ? prevTime - 1 : prevTime));
       } else {
         setBlackTime((prevTime) => (prevTime > 0 ? prevTime - 1 : prevTime));
       }
-      console.log("state: ", isBlackTurn);
+      // console.log("state: ", isBlackTurn);
     }, 1000);
 
     setTimerInterval(timer);
@@ -31,17 +31,16 @@ const ChessClock = () => {
     return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
   };
 
-  const handleTurnChange = () => {
-    dispatch({ type: "changeTurn" });
-  };
-
   return (
     <div>
-      <br/>
-      <hr/>
-      <div>White: {formatTime(whiteTime)}</div>
-      <div>Black: {formatTime(blackTime)}</div>
-      <button onClick={handleTurnChange}>Change Turn</button>
+      <div id="timer">
+        <div className={isBlackTurn ? "redText" : "normalText"}>
+          Black: {formatTime(blackTime)}
+        </div>
+        <div className={isBlackTurn ? "normalText" : "redText"}>
+          White: {formatTime(whiteTime)}
+        </div>
+      </div>
     </div>
   );
 };
