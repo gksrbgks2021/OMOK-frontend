@@ -56,7 +56,7 @@ function Online() {
         console.log("onConnect 실행됨...");
         subscribe(roomId);
         client.current.publish({
-          destination: "/chatroom/roomA",
+          destination: `/chatroom/${roomId}`,
           body: "Hello world",
         });
       },
@@ -109,7 +109,7 @@ function Online() {
         console.error("Error during get request:", error);
       });
 
-    return () => disConnect();
+    // return () => disConnect();
   }, []);
 
   const handler = (message) => {
@@ -134,7 +134,8 @@ function Online() {
     let roomId = "roomA";
     let senderId = "";
     do {
-      senderId = prompt("유저 이름을 입력해 주세요");
+      senderId = prompt("유저 이름을 입력해 주세요.");
+      roomId = prompt("방 이름을 설정해주세요.");
     } while (senderId === "");
 
     let fee = counter.valueOf();

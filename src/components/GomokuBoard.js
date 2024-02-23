@@ -26,23 +26,6 @@ const GomokuBoard = () => {
     Array.from({ length: 15 }, () => Array(15).fill(null))
   );
 
-  const subscribe = (roomId) => {
-    const subscription = client.current.subscribe(
-      `/chatroom/${roomId}`,
-      msg_callback
-    );
-    return subscription;
-  };
-
-  /*broker 가 client 한테 메시지 전송할때마다, 트리거되는 콜백 함수.*/
-  const msg_callback = (message) => {
-    if (message.body) {
-      console.log("받아온 메시지 : " + message.body);
-    } else {
-      console.log("메시지 is empty !!");
-    }
-  };
-
   const handleClick = (i, j) => {
     // console.log(`Cell clicked: (${i}, ${j})`);
     // console.log("state: ", isBlackTurn);
