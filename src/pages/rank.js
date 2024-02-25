@@ -8,7 +8,6 @@ function Rank() {
     <div id="wrapper">
       <StatusBar />
       <NavigationBar />
-      <h2>Rank</h2>
       <div id="block">
         <div id="box">
           <User />
