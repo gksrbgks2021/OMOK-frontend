@@ -103,7 +103,26 @@ function Roomlist(props) {
     <div>
       <StatusBar />
       <NavigationBar />
-      <h1>채팅방 목록</h1>
+      <h1 id="roomListTitle">Room List</h1>
+      <div id="listBox">
+        <div className="room">
+          <div>code: A8D7</div>
+          <div>김씨만 들어오셈!</div>
+        </div>
+        <div className="room">
+          <div>code: C8G7</div>
+          <div>박씨만 들어오셈!</div>
+        </div>
+        <div className="room">
+          <div>code: D9R7</div>
+          <div>이씨만 들어오셈!</div>
+        </div>
+        <div className="room">
+          <div>code: U8O7</div>
+          <div>최씨만 들어오셈!</div>
+        </div>
+      </div>
+
       <ul>
         {chatRoomData &&
           chatRoomData.map((data) => (
