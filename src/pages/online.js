@@ -217,7 +217,19 @@ function Online() {
   };
 
   const updateCounter = (value) => {
-    setCounter((prevCounter) => prevCounter + value);
+    // 새로운 상태값을 계산합니다.
+    const newCounter = counter + value;
+
+    // 새로운 상태값이 0보다 작으면 0으로 설정
+    // 1000보다 크면 1000으로 설정
+    if (newCounter < 10) {
+      setCounter(10);
+    } else if (newCounter >= 1000) {
+      setCounter(1000);
+    } else {
+      setCounter(newCounter);
+    }
+    // setCounter((prevCounter) => prevCounter + value);
   };
 
   useEffect(() => {
@@ -268,8 +280,7 @@ function Online() {
         <input
           id="enter-code"
           type="text"
-          placeholder="Enter Friend Code..."
-        ></input>
+          placeholder="Enter Friend Code..."></input>
         <button id="startbutton" onClick={handleStart}>
           Start Game!
         </button>
