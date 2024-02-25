@@ -130,7 +130,7 @@ const GomokuBoard = () => {
             <Countdown />
           </div>
         </div>
-        <h2>
+        <h2 id="currentPlayer">
           Current Player: <img src={icon} alt="Icon" id="icon" />
         </h2>
         <div id="contain_board">

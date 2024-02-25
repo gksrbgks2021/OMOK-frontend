@@ -9,7 +9,6 @@ function Game() {
     <div className="body">
       <StatusBar />
       <NavigationBar />
-      <h2>Game</h2>
       <ul>
         <li>
           <Link to="/game/online">
