@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import moneyImage from "./styles/icon/statusBar/smile.png";
+import { useSelector } from "react-redux";
 
 //status bar 전체
 const StatBar = styled.div`
@@ -34,7 +35,7 @@ const Image = styled.img`
   margin-right: auto;
 `;
 
-const Name = styled(Asset)`
+const EmailStatus = styled(Asset)`
   float: left;
 `;
 
@@ -42,14 +43,17 @@ const StatusBar = () => {
   const initialMoney = 0; // 초기 돈 설정
   const [money, setMoney] = useState(initialMoney);
 
+  const userEmail = useSelector((state) => state.auth.email);
   // 돈을 업데이트하는 함수(서버에서 계산해서 바로 받아오게 바꿀 예정)
   const updateMoney = (amount) => {
     setMoney(money + amount);
   };
 
+  console.log("유저이메일: ", userEmail);
+
   return (
     <StatBar>
-      <Name>user1</Name>
+      <EmailStatus>{userEmail}</EmailStatus>
       <Asset>
         <Image src={moneyImage} alt="money" />
         {money}

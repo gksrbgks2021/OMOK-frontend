@@ -36,24 +36,7 @@ function Main() {
     const googleurl = URL_POST_SOCIALLOGIN + "/" + GOOGLE;
 
     console.log(URL_POST_TEST);
-    axios({
-      method: "post",
-      url: url,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => {
-        console.log(`응답: `, response);
-        let data = response.data;
-        if (response.data) {
-          console.log("data", data);
-          dispatch(signupSuccess(data));
-        }
-      })
-      .catch((error) => {
-        console.error("Error during POST request:", error);
-      });
+    window.location.href = googleurl;
   };
   const handleGuestLogin = () => {
     console.log("게스트 로그인 처리합니다");

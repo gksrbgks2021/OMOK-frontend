@@ -11,12 +11,13 @@ const initialState = {
 };
 // Reducer
 const authReducer = (state = initialState, action) => {
+  console.log("authReducer : ", action.payload);
   switch (action.type) {
     case SIGNUP_SUCCESS:
       return {
         ...state,
-        id: action.payload,
-        email: action.payload,
+        id: action.payload.id,
+        email: action.payload.email,
         error: null,
       };
     case SIGNUP_FAILURE:

@@ -275,7 +275,8 @@ function Online() {
         <input
           id="enter-code"
           type="text"
-          placeholder="Enter Friend Code..."></input>
+          placeholder="Enter Friend Code..."
+        ></input>
         <button id="startbutton" onClick={handleStart}>
           Start Game!
         </button>
