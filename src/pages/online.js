@@ -243,14 +243,9 @@ function Online() {
       console.log(chatState);
       console.log("연결됐지롱");
       const destination = "/app/message"; // Adjust based on your server endpoint
-      client.current.activate(
-        // activate
-        destination,
-        {},
-        JSON.stringify({
-          chatState,
-        })
-      );
+      // client.current.send(destination, {}, JSON.stringify({
+      //   chatState,
+      // }));
     } else {
       console.error("웹소켓 연결이 안됐습니다....");
     }
