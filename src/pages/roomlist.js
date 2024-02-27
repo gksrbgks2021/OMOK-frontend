@@ -7,21 +7,10 @@ import * as StompJs from "@stomp/stompjs";
 import axios from "axios";
 import { URL_GET_GETALLROOM } from "../constants/UrlConstants";
 import "../styles/roomlistStyle.css";
-import {
-  chatMsgStatus,
-  chatRoomIdStatus,
-  initMessage,
-  senderIdStatus,
-  setMessageText,
-} from "../stores/ChatReducer";
+import { initMessage } from "../stores/ChatReducer";
 
 function Roomlist(props) {
   const [chatRoomData, setChatRoomData] = useState([]);
-  const [roomInfo, setRoomInfo] = useState(null); // 방 정보를 상태로 저장
-  const chatState = useSelector(chatMsgStatus);
-  const redux_chatRoomId = useSelector(chatRoomIdStatus);
-  const redux_senderId = useSelector(senderIdStatus);
-
   const client = useRef({});
   const navigate = useNavigate();
   const dispatch = useDispatch();

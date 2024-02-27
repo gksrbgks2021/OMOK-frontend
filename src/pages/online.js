@@ -25,112 +25,24 @@ const MessageType = {
 
 function Online() {
   const [counter, setCounter] = useState(100);
-  const [content, setContent] = useState("");
   const [chatRoomData, setChatRoomData] = useState([]);
   const [roomInfo, setRoomInfo] = useState(null); // 방 정보를 상태로 저장
   const client = useRef({});
-  const msgQueueFlag = useSelector((state) => state.turn.isThereMsg);
-  const messageField = useRef(null);
-  const myChatRoom = null;
   const navigate = useNavigate();
-
-  const chatState = useSelector(chatMsgStatus);
-  const redux_chatRoomId = useSelector(chatRoomIdStatus);
-  const redux_senderId = useSelector(senderIdStatus);
-
   const dispatch = useDispatch();
 
   let data;
 
-  const connect = (roomId) => {
-    client.current = new StompJs.Client({
-      brokerURL: "ws://localhost:8002/ws/websocket",
-      connectHeaders: {
-        login: "user",
-        password: "password",
-      },
-      debug: function (str) {
-        console.log(str);
-      },
-      onConnect: () => {
-        console.log("onConnect 실행됨...");
-        subscribe(roomId);
-        client.current.publish({
-          destination: `/chatroom/${roomId}`,
-          body: "Hello world",
-        });
-      },
-      onStompError: (frame) => {
-        console.log("Broker reported error: " + frame.headers["message"]);
-        console.log("Additional details: " + frame.body);
-      },
-    });
+  // const handler = (message) => {
+  //   if (!client.current.connected) return;
 
-    /*활성화 시켜준다. */
-    client.current.activate();
-  };
-
-  const subscribe = (roomId) => {
-    const subscription = client.current.subscribe(
-      `/chatroom/${roomId}`,
-      msg_callback
-    );
-    return subscription;
-  };
-
-  /*broker 가 client 한테 메시지 전송할때마다, 트리거되는 콜백 함수.*/
-  const msg_callback = (message) => {
-    if (message.body) {
-      console.log("받아온 메시지 : " + message.body);
-    } else {
-      console.log("메시지 is empty !!");
-    }
-  };
-
-  // const addContent = (message) => {
-  //   setContent(content.concat(message));
+  //   client.current.publish({
+  //     destination: "/app/game/msg",
+  //     body: JSON.stringify({
+  //       message: message,
+  //     }),
+  //   });
   // };
-
-  useEffect(() => {
-    connect();
-    axios({
-      method: "get",
-      url: URL_GET_GETALLROOM,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => {
-        console.log(`응답: `, response);
-        data = response.data;
-        setChatRoomData(data);
-      })
-      .catch((error) => {
-        console.error("Error during get request:", error);
-      });
-
-    // return () => disConnect();
-  }, []);
-
-  useEffect(() => {
-    if (msgQueueFlag) {
-      console.log("msgQeueueFLag 변경됨");
-    }
-  }, msgQueueFlag);
-  const handler = (message) => {
-    if (!client.current.connected) return;
-
-    client.current.publish({
-      destination: "/app/game/msg",
-      body: JSON.stringify({
-        message: message,
-      }),
-    });
-  };
-
-  const disConnect = () => {
-    if (client.current.connected) client.current.deactivate();
-  };
 
   const handleCreateRoom = () => {
     console.log("버튼 클릭됨");
@@ -146,7 +58,7 @@ function Online() {
     let fee = counter.valueOf();
 
     //웹 소켓 연결
-    connect(roomId);
+    // connect(roomId);
 
     axios({
       method: "post",
@@ -201,25 +113,25 @@ function Online() {
     console.log("url = ", URL_GET_FRIENDROOM + inputValue);
   };
 
-  const searchRooms = () => {
-    console.log("방찾기!");
-    /*전송 요청을 합니다.*/
-    axios({
-      method: "get",
-      url: URL_GET_GETALLROOM,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => {
-        console.log(`응답: `, response);
-        let data = response.data;
-        setChatRoomData(data);
-      })
-      .catch((error) => {
-        console.error("Error during get request:", error);
-      });
-  };
+  // const searchRooms = () => {
+  //   console.log("방찾기!");
+  //   /*전송 요청을 합니다.*/
+  //   axios({
+  //     method: "get",
+  //     url: URL_GET_GETALLROOM,
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   })
+  //     .then((response) => {
+  //       console.log(`응답: `, response);
+  //       let data = response.data;
+  //       setChatRoomData(data);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error during get request:", error);
+  //     });
+  // };
 
   const updateCounter = (value) => {
     // 새로운 상태값을 계산합니다.
@@ -236,26 +148,6 @@ function Online() {
     }
     // setCounter((prevCounter) => prevCounter + value);
   };
-
-  useEffect(() => {
-    console.log("devdev", client.current.connected);
-  }, [client.current.connected]);
-
-  useEffect(() => {
-    console.log(`현재 chatState:`, client.current.connected);
-    /*웹소켓으로 메시지 전송*/
-    if (client.current && client.current.connected) {
-      console.log(chatState);
-      console.log("연결됐지롱");
-      const destination = "/app/message"; // Adjust based on your server endpoint
-      // client.current.send(destination, {}, JSON.stringify({
-      //   chatState,
-      // }));
-    } else {
-      console.error("웹소켓 연결이 안됐습니다....");
-    }
-  }, [redux_chatRoomId, redux_senderId]);
-  // This ensures the log reflects the latest state after updates.
 
   console.log("데이터 = ", data);
 

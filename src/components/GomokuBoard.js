@@ -1,12 +1,19 @@
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
+import * as StompJs from "@stomp/stompjs";
 import { useDispatch, connect, useSelector } from "react-redux";
-import { setMessageText } from "../stores/ChatReducer";
 import "../styles/GomokuBoard.css";
 import Countdown from "../pages/timer";
 import blackIcon from "../styles/icon/board/black.png";
 import whiteIcon from "../styles/icon/board/white.png";
 import { emptyMsg, noticeMsg } from "../stores/TurnReducer";
+import {
+  chatMsgStatus,
+  chatRoomIdStatus,
+  initMessage,
+  senderIdStatus,
+  setMessageText,
+} from "../stores/ChatReducer";
 
 const GomokuBoard = () => {
   // const { gameType } = useParams();
@@ -16,7 +23,9 @@ const GomokuBoard = () => {
   const gameType = path.split("/").pop();
   const dispatch = useDispatch();
   const isBlackTurn = useSelector((state) => state.turn.isBlack);
+  const msgQueueFlag = useSelector((state) => state.turn.isThereMsg);
   const [turn, setTurn] = useState(true); //turn 0 == black, 1 == white
+  const [content, setContent] = useState("");
   const [userList, SetUserList] = useState([]);
   const [whiteTime, setWhiteTime] = useState(600);
   const [blackTime, setBlackTime] = useState(600);
@@ -26,6 +35,90 @@ const GomokuBoard = () => {
   const [cellState, setCellState] = useState(
     Array.from({ length: 15 }, () => Array(15).fill(null))
   );
+
+  const chatState = useSelector(chatMsgStatus);
+  const redux_chatRoomId = useSelector(chatRoomIdStatus);
+  const redux_senderId = useSelector(senderIdStatus);
+  const userEmail = useSelector((state) => state.auth.email);
+
+  const connect = (roomId) => {
+    client.current = new StompJs.Client({
+      brokerURL: "ws://localhost:8002/ws/websocket",
+      connectHeaders: {
+        senderEmail: userEmail ? userEmail : "guest",
+      },
+      debug: function (str) {
+        console.log(str);
+      },
+      onConnect: () => {
+        console.log("onConnect 실행됨...");
+        subscribe(roomId);
+        client.current.publish({
+          destination: `/chatroom/${roomId}`,
+          body: "Hello world",
+        });
+      },
+      onStompError: (frame) => {
+        console.log("Broker reported error: " + frame.headers["message"]);
+        console.log("Additional details: " + frame.body);
+      },
+    });
+
+    /*활성화 시켜준다. */
+    client.current.activate();
+  };
+
+  const subscribe = (roomId) => {
+    const subscription = client.current.subscribe(
+      `/chatroom/${roomId}`,
+      msg_callback
+    );
+    return subscription;
+  };
+
+  /*broker 가 client 한테 메시지 전송할때마다, 트리거되는 콜백 함수.*/
+  const msg_callback = (message) => {
+    if (message.body) {
+      console.log("받아온 메시지 : " + message.body);
+    } else {
+      console.log("메시지 is empty !!");
+    }
+  };
+
+  const addContent = (message) => {
+    setContent(content.concat(message));
+  };
+
+  const disConnect = () => {
+    if (client.current.connected) client.current.deactivate();
+  };
+
+  useEffect(() => {
+    console.log("클라이언트 연결됨", client.current.connected);
+    connect(chatRoomIdStatus);
+  }, [client.current.connected]);
+
+  useEffect(() => {
+    console.log(`현재 chatState:`, client.current.connected);
+    /*웹소켓으로 메시지 전송*/
+    if (client.current && client.current.connected) {
+      console.log(chatState);
+      console.log("연결됐지롱");
+      const destination = "/app/message"; // Adjust based on your server endpoint
+      // client.current.send(destination, {}, JSON.stringify({
+      //   chatState,
+      // }));
+    } else {
+      console.error("웹소켓 연결이 안됐습니다....");
+    }
+  }, [redux_chatRoomId, redux_senderId]);
+  // This ensures the log reflects the latest state after updates.
+
+  useEffect(() => {
+    if (msgQueueFlag === false) {
+      console.log("msgQeueueFLag 변경됨");
+    }
+  }, [msgQueueFlag]);
 
   const handleClick = (i, j) => {
     // console.log(`Cell clicked: (${i}, ${j})`);
