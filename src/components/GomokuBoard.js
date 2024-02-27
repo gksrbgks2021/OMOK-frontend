@@ -6,6 +6,7 @@ import "../styles/GomokuBoard.css";
 import Countdown from "../pages/timer";
 import blackIcon from "../styles/icon/board/black.png";
 import whiteIcon from "../styles/icon/board/white.png";
+import { emptyMsg, noticeMsg } from "../stores/TurnReducer";
 
 const GomokuBoard = () => {
   // const { gameType } = useParams();
@@ -44,17 +45,22 @@ const GomokuBoard = () => {
         setTurn(turn === true ? false : true);
       }
     } else {
+      //온라인 일때 클릭 이벤트 핸들링.
       if (cellState[i][j] === null) {
         const newCellState = [...cellState];
         newCellState[i][j] = turn;
         setCellState(newCellState);
         // setTurn(turn === true ? false : true);
       }
+      //전송할 메시지 세팅
       if (isBlackTurn === true) {
         dispatch(setMessageText(`${i},${j}::black::${blackTime}`));
       } else {
-        dispatch(setMessageText(`${i},${j}::black::${whiteTime}`));
+        dispatch(setMessageText(`${i},${j}::white::${whiteTime}`));
       }
+      //스위치 온
+      dispatch(noticeMsg());
+      dispatch(emptyMsg());
     }
   };
 

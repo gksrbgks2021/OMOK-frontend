@@ -29,7 +29,7 @@ function Online() {
   const [chatRoomData, setChatRoomData] = useState([]);
   const [roomInfo, setRoomInfo] = useState(null); // 방 정보를 상태로 저장
   const client = useRef({});
-
+  const msgQueueFlag = useSelector((state) => state.turn.isThereMsg);
   const messageField = useRef(null);
   const myChatRoom = null;
   const navigate = useNavigate();
@@ -112,6 +112,11 @@ function Online() {
     // return () => disConnect();
   }, []);
 
+  useEffect(() => {
+    if (msgQueueFlag) {
+      console.log("msgQeueueFLag 변경됨");
+    }
+  }, msgQueueFlag);
   const handler = (message) => {
     if (!client.current.connected) return;
 
