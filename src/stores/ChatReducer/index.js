@@ -69,5 +69,11 @@ export const initMessage = (roomId, senderId) => ({
     senderId: senderId,
   },
 });
-
+export const enterMessage = (msg)=>({
+  type:SEND_MESSAGE,
+  payload: {
+    messageType: "TALK",
+    messageText: msg,
+  }
+})
 export default chatReducer;
